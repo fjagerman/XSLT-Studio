@@ -3,6 +3,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14460.31"/>
         <plugIn identifier="com.apple.WebKit2IBPlugin" version="14460.31"/>
+        <capability name="System colors introduced in macOS 10.13" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -702,10 +703,10 @@
             </objects>
             <point key="canvasLocation" x="75" y="250"/>
         </scene>
-        <!--Split View Controller-->
+        <!--Studio View Controller-->
         <scene sceneID="r8k-ph-l4u">
             <objects>
-                <splitViewController id="hBm-FF-qUJ" sceneMemberID="viewController">
+                <splitViewController id="hBm-FF-qUJ" customClass="XSLTStudioViewController" customModule="XSLT_Studio" customModuleProvider="target" sceneMemberID="viewController">
                     <wkWebView key="view" wantsLayer="YES" id="739-Vb-MFr">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -726,6 +727,7 @@
                         </connections>
                     </splitView>
                     <connections>
+                        <outlet property="LeftSplitview" destination="60g-QL-F1o" id="hcg-CA-8x7"/>
                         <outlet property="splitView" destination="60g-QL-F1o" id="83Q-gY-nlh"/>
                         <segue destination="WCg-Oj-opA" kind="relationship" relationship="splitItems" id="ood-lj-rxK"/>
                         <segue destination="fw6-tV-rDQ" kind="relationship" relationship="splitItems" id="tcm-Uv-a63"/>
@@ -751,7 +753,9 @@
                         </connections>
                     </splitView>
                     <connections>
+                        <outlet property="bottom" destination="G3M-WJ-fQb" id="bE6-Sy-ffF"/>
                         <outlet property="splitView" destination="CDV-gA-oqh" id="cM3-Wx-Z1r"/>
+                        <outlet property="top" destination="buc-eA-idW" id="De0-BE-25q"/>
                         <segue destination="PTB-oZ-PWu" kind="relationship" relationship="splitItems" id="dPV-vD-ivs"/>
                         <segue destination="YjN-w4-CaH" kind="relationship" relationship="splitItems" id="1VJ-yd-fnB"/>
                     </connections>
@@ -760,15 +764,15 @@
             </objects>
             <point key="canvasLocation" x="890" y="526"/>
         </scene>
-        <!--View Controller-->
+        <!--Top Left View Controller-->
         <scene sceneID="7T8-7I-XeI">
             <objects>
-                <viewController id="PTB-oZ-PWu" sceneMemberID="viewController">
+                <viewController id="PTB-oZ-PWu" customClass="TopLeftViewController" customModule="XSLT_Studio" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="hIb-rj-Xid">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <stackView distribution="fill" orientation="horizontal" alignment="top" spacing="2" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tBA-Y1-8d9">
+                            <stackView distribution="fill" orientation="horizontal" alignment="top" spacing="2" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" verticalHuggingPriority="750" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tBA-Y1-8d9">
                                 <rect key="frame" x="0.0" y="283" width="450" height="17"/>
                                 <subviews>
                                     <textField horizontalHuggingPriority="249" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="dX2-pW-poI">
@@ -804,22 +808,37 @@
                                     <real value="3.4028234663852886e+38"/>
                                 </customSpacing>
                             </stackView>
+                            <textField horizontalHuggingPriority="247" verticalHuggingPriority="248" translatesAutoresizingMaskIntoConstraints="NO" id="P1h-gh-E1J">
+                                <rect key="frame" x="0.0" y="0.0" width="450" height="283"/>
+                                <textFieldCell key="cell" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" title="Dit wordt de inputtext" drawsBackground="YES" id="XaD-Hg-lN4">
+                                    <font key="font" usesAppearanceFont="YES"/>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="windowBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
                         </subviews>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="tBA-Y1-8d9" secondAttribute="trailing" id="1Qn-Gt-bf7"/>
+                            <constraint firstAttribute="bottom" secondItem="P1h-gh-E1J" secondAttribute="bottom" id="BnD-Wi-rYy"/>
                             <constraint firstItem="tBA-Y1-8d9" firstAttribute="leading" secondItem="hIb-rj-Xid" secondAttribute="leading" id="JSK-SN-Gxt"/>
                             <constraint firstItem="tBA-Y1-8d9" firstAttribute="top" secondItem="hIb-rj-Xid" secondAttribute="top" id="awM-Wa-aft"/>
+                            <constraint firstItem="P1h-gh-E1J" firstAttribute="top" secondItem="tBA-Y1-8d9" secondAttribute="bottom" id="fqD-rr-DFs"/>
+                            <constraint firstAttribute="trailing" secondItem="P1h-gh-E1J" secondAttribute="trailing" id="qd4-Pu-k51"/>
+                            <constraint firstItem="P1h-gh-E1J" firstAttribute="leading" secondItem="hIb-rj-Xid" secondAttribute="leading" id="ztj-dt-JtY"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="xmlInput" destination="P1h-gh-E1J" id="Ec0-UA-qji"/>
+                    </connections>
                 </viewController>
                 <customObject id="WBz-yr-bV0" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1582" y="340"/>
         </scene>
-        <!--View Controller-->
+        <!--Bottom Left View Controller-->
         <scene sceneID="Ynv-64-76V">
             <objects>
-                <viewController id="YjN-w4-CaH" sceneMemberID="viewController">
+                <viewController id="YjN-w4-CaH" customClass="BottomLeftViewController" customModule="XSLT_Studio" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="0Cs-44-ahc">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -832,20 +851,35 @@
                                 <textFieldCell key="cell" lineBreakMode="clipping" title=" XSLT" drawsBackground="YES" id="QRb-NZ-XdU">
                                     <font key="font" usesAppearanceFont="YES"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="247" verticalHuggingPriority="248" translatesAutoresizingMaskIntoConstraints="NO" id="KZd-7F-km9">
+                                <rect key="frame" x="0.0" y="0.0" width="450" height="283"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" title="Dit wordt de XSLT" drawsBackground="YES" id="etE-EA-5uD">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="windowBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
                         </subviews>
                         <constraints>
+                            <constraint firstAttribute="bottom" secondItem="KZd-7F-km9" secondAttribute="bottom" id="MIT-vs-8S8"/>
+                            <constraint firstItem="KZd-7F-km9" firstAttribute="leading" secondItem="0Cs-44-ahc" secondAttribute="leading" id="S4h-XG-5Rg"/>
                             <constraint firstItem="2ke-TF-gzT" firstAttribute="leading" secondItem="0Cs-44-ahc" secondAttribute="leading" id="fQM-ME-MND"/>
                             <constraint firstAttribute="trailing" secondItem="2ke-TF-gzT" secondAttribute="trailing" id="jtl-dK-QPt"/>
                             <constraint firstItem="2ke-TF-gzT" firstAttribute="top" secondItem="0Cs-44-ahc" secondAttribute="top" id="rTg-Sj-AQL"/>
+                            <constraint firstItem="KZd-7F-km9" firstAttribute="top" secondItem="2ke-TF-gzT" secondAttribute="bottom" id="rm9-Be-8vG"/>
+                            <constraint firstAttribute="trailing" secondItem="KZd-7F-km9" secondAttribute="trailing" id="vCq-qb-oeO"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="xsltInput" destination="KZd-7F-km9" id="Omz-67-V8i"/>
+                    </connections>
                 </viewController>
                 <customObject id="vCX-cE-3bL" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1582" y="712"/>
+            <point key="canvasLocation" x="1582" y="724"/>
         </scene>
         <!--Split View Controller-->
         <scene sceneID="nFz-EI-mBu">
@@ -872,10 +906,10 @@
             </objects>
             <point key="canvasLocation" x="890" y="1350"/>
         </scene>
-        <!--View Controller-->
+        <!--Top Right View Controller-->
         <scene sceneID="gJ1-H7-5ei">
             <objects>
-                <viewController id="Y6c-YC-zOJ" sceneMemberID="viewController">
+                <viewController id="Y6c-YC-zOJ" customClass="TopRightViewController" customModule="XSLT_Studio" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="NXh-gd-TF1">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -887,26 +921,66 @@
                                 </constraints>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title=" Result" drawsBackground="YES" id="CZe-2l-BzM">
                                     <font key="font" usesAppearanceFont="YES"/>
-                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="windowBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
+                            <scrollView appearanceType="aqua" borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NG1-In-3aT">
+                                <rect key="frame" x="0.0" y="0.0" width="450" height="280"/>
+                                <clipView key="contentView" copiesOnScroll="NO" id="FEH-LU-YcO">
+                                    <rect key="frame" x="0.0" y="0.0" width="450" height="280"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <textView verticallyResizable="YES" usesFontPanel="YES" usesInspectorBar="YES" findStyle="bar" allowsDocumentBackgroundColorChange="YES" usesRuler="YES" spellingCorrection="YES" smartInsertDelete="YES" id="KCF-WV-334">
+                                            <rect key="frame" x="0.0" y="0.0" width="450" height="588"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="backgroundColor" name="findHighlightColor" catalog="System" colorSpace="catalog"/>
+                                            <size key="minSize" width="450" height="280"/>
+                                            <size key="maxSize" width="457" height="10000000"/>
+                                            <attributedString key="textStorage">
+                                                <fragment>
+                                                    <mutableString key="content">aso asdf askjdf akjsdfh aldkfh aksdjfh aso asdf askjdf akjsdfh aldkfh aksdjfhaso asdf askjdf akjsdfh aldkfh aksdjfhaso asdf askjdf akjsdfh aldkfh aksdjfhaso asdf askjdf akjsdfh aldkfh aksdjfhaso asdf askjdf akjsdfh aldkfh aksdjfhaso asdf askjdf akjsdfh aldkfh aksdjfhaso asdf askjdf akjsdfh aldkfh aksdjfh</mutableString>
+                                                    <attributes>
+                                                        <color key="NSColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <font key="NSFont" size="12" name="Helvetica"/>
+                                                        <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                    </attributes>
+                                                </fragment>
+                                            </attributedString>
+                                            <color key="insertionPointColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                        </textView>
+                                    </subviews>
+                                </clipView>
+                                <scroller key="verticalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="QQC-Gc-v0b">
+                                    <rect key="frame" x="434" y="0.0" width="16" height="280"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
+                            </scrollView>
                         </subviews>
                         <constraints>
                             <constraint firstItem="dd1-Vs-lPh" firstAttribute="top" secondItem="NXh-gd-TF1" secondAttribute="top" id="1Yr-YB-Ywp"/>
+                            <constraint firstAttribute="bottom" secondItem="NG1-In-3aT" secondAttribute="bottom" id="BFJ-Gz-u7c"/>
+                            <constraint firstItem="NG1-In-3aT" firstAttribute="leading" secondItem="NXh-gd-TF1" secondAttribute="leading" id="Kbl-0l-cHD"/>
+                            <constraint firstItem="NG1-In-3aT" firstAttribute="top" secondItem="dd1-Vs-lPh" secondAttribute="bottom" constant="3" id="RxR-t5-rX8"/>
+                            <constraint firstAttribute="trailing" secondItem="NG1-In-3aT" secondAttribute="trailing" id="Y71-cX-wok"/>
                             <constraint firstAttribute="trailing" secondItem="dd1-Vs-lPh" secondAttribute="trailing" id="ahm-Lm-ggg"/>
                             <constraint firstItem="dd1-Vs-lPh" firstAttribute="leading" secondItem="NXh-gd-TF1" secondAttribute="leading" id="cce-ED-6NT"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="textOutput" destination="FEH-LU-YcO" id="8Je-kP-dbl"/>
+                        <outlet property="textView" destination="KCF-WV-334" id="3nj-YD-y3i"/>
+                    </connections>
                 </viewController>
                 <customObject id="iwc-pi-hDk" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1582" y="1131"/>
         </scene>
-        <!--View Controller-->
+        <!--Bottom Right View Controller-->
         <scene sceneID="Q7P-QC-Y73">
             <objects>
-                <viewController id="RYX-Vm-QMo" sceneMemberID="viewController">
+                <viewController id="RYX-Vm-QMo" customClass="BottomRightViewController" customModule="XSLT_Studio" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="TNS-sv-d2r">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -919,7 +993,7 @@
                                 <textFieldCell key="cell" lineBreakMode="clipping" title=" HTML" drawsBackground="YES" id="tgv-Ld-e9D">
                                     <font key="font" usesAppearanceFont="YES"/>
                                     <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="windowBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
                             <wkWebView wantsLayer="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rY8-Dj-DpP">
@@ -940,6 +1014,9 @@
                             <constraint firstAttribute="trailing" secondItem="E2Y-zu-uhf" secondAttribute="trailing" id="val-hR-Bfa"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="webView" destination="rY8-Dj-DpP" id="DcZ-bL-kFX"/>
+                    </connections>
                 </viewController>
                 <customObject id="aa7-z6-fgK" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
