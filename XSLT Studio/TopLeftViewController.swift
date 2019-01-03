@@ -15,5 +15,8 @@ class TopLeftViewController: NSViewController {
         super.viewDidLoad()
         // Do view setup here.
     }
+    @IBAction func xmlInputAction(_ sender: NSTextFieldCell) {
+        NotificationCenter.default.post(name: Notification.Name("XsltStudioDocumentChanged"), object: self)
+    }
     
 }

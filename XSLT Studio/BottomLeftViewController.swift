@@ -16,4 +16,9 @@ class BottomLeftViewController: NSViewController {
         // Do view setup here.
     }
     
+    // Action to create notification or main viewcontroller o update result
+    @IBAction func xsltInputAction(_ sender: NSTextFieldCell) {
+        NotificationCenter.default.post(name: Notification.Name("XsltStudioDocumentChanged"), object: self)
+    }
+    
 }

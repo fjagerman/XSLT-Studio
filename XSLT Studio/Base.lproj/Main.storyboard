@@ -3,7 +3,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14460.31"/>
         <plugIn identifier="com.apple.WebKit2IBPlugin" version="14460.31"/>
-        <capability name="System colors introduced in macOS 10.13" minToolsVersion="9.0"/>
+        <capability name="System colors introduced in macOS 10.14" minToolsVersion="10.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -696,7 +696,7 @@
                         </connections>
                     </window>
                     <connections>
-                        <segue destination="hBm-FF-qUJ" kind="relationship" relationship="window.shadowedContentViewController" id="9qy-zG-cUy"/>
+                        <segue destination="FIk-Ol-pm0" kind="relationship" relationship="window.shadowedContentViewController" id="TKx-2G-bzT"/>
                     </connections>
                 </windowController>
                 <customObject id="6f7-a7-6o1" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
@@ -704,38 +704,29 @@
             <point key="canvasLocation" x="75" y="250"/>
         </scene>
         <!--Studio View Controller-->
-        <scene sceneID="r8k-ph-l4u">
+        <scene sceneID="O2R-LY-ULc">
             <objects>
-                <splitViewController id="hBm-FF-qUJ" customClass="XSLTStudioViewController" customModule="XSLT_Studio" customModuleProvider="target" sceneMemberID="viewController">
-                    <wkWebView key="view" wantsLayer="YES" id="739-Vb-MFr">
-                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <wkWebViewConfiguration key="configuration">
-                            <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
-                            <wkPreferences key="preferences"/>
-                        </wkWebViewConfiguration>
-                    </wkWebView>
+                <splitViewController id="FIk-Ol-pm0" customClass="XSLTStudioViewController" customModule="XSLT_Studio" customModuleProvider="target" propertyAccessControl="none" sceneMemberID="viewController">
                     <splitViewItems>
-                        <splitViewItem id="2Yx-XE-2rF"/>
-                        <splitViewItem id="XpW-YO-d48"/>
+                        <splitViewItem id="6QQ-qN-NOH"/>
+                        <splitViewItem id="uR3-3W-LNA"/>
                     </splitViewItems>
-                    <splitView key="splitView" dividerStyle="thin" vertical="YES" id="60g-QL-F1o">
+                    <splitView key="splitView" vertical="YES" id="hfB-JX-PWI">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <connections>
-                            <outlet property="delegate" destination="hBm-FF-qUJ" id="Dk1-vf-Ws9"/>
+                            <outlet property="delegate" destination="FIk-Ol-pm0" id="aZA-lg-a2W"/>
                         </connections>
                     </splitView>
                     <connections>
-                        <outlet property="LeftSplitview" destination="60g-QL-F1o" id="hcg-CA-8x7"/>
-                        <outlet property="splitView" destination="60g-QL-F1o" id="83Q-gY-nlh"/>
-                        <segue destination="WCg-Oj-opA" kind="relationship" relationship="splitItems" id="ood-lj-rxK"/>
-                        <segue destination="fw6-tV-rDQ" kind="relationship" relationship="splitItems" id="tcm-Uv-a63"/>
+                        <outlet property="splitView" destination="hfB-JX-PWI" id="aHu-Ux-KPc"/>
+                        <segue destination="WCg-Oj-opA" kind="relationship" relationship="splitItems" id="Vrn-Uf-JTd"/>
+                        <segue destination="fw6-tV-rDQ" kind="relationship" relationship="splitItems" id="5fM-wU-44t"/>
                     </connections>
                 </splitViewController>
-                <customObject id="NxL-2p-3y2" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <customObject id="35X-aT-r5f" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="76" y="1075"/>
+            <point key="canvasLocation" x="75" y="842"/>
         </scene>
         <!--Split View Controller-->
         <scene sceneID="nGu-k9-Ibm">
@@ -745,7 +736,7 @@
                         <splitViewItem id="buc-eA-idW"/>
                         <splitViewItem id="G3M-WJ-fQb"/>
                     </splitViewItems>
-                    <splitView key="splitView" dividerStyle="thin" id="CDV-gA-oqh">
+                    <splitView key="splitView" id="CDV-gA-oqh">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <connections>
@@ -762,7 +753,7 @@
                 </splitViewController>
                 <customObject id="KpF-Xn-Fcy" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="890" y="526"/>
+            <point key="canvasLocation" x="890" y="581"/>
         </scene>
         <!--Top Left View Controller-->
         <scene sceneID="7T8-7I-XeI">
@@ -808,12 +799,18 @@
                                     <real value="3.4028234663852886e+38"/>
                                 </customSpacing>
                             </stackView>
-                            <textField horizontalHuggingPriority="247" verticalHuggingPriority="248" translatesAutoresizingMaskIntoConstraints="NO" id="P1h-gh-E1J">
+                            <textField verticalHuggingPriority="248" translatesAutoresizingMaskIntoConstraints="NO" id="P1h-gh-E1J">
                                 <rect key="frame" x="0.0" y="0.0" width="450" height="283"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="100" id="thd-6a-bVi"/>
+                                </constraints>
                                 <textFieldCell key="cell" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" title="Dit wordt de inputtext" drawsBackground="YES" id="XaD-Hg-lN4">
                                     <font key="font" usesAppearanceFont="YES"/>
                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="windowBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                    <connections>
+                                        <action selector="xmlInputAction:" target="PTB-oZ-PWu" id="X59-X7-8iJ"/>
+                                    </connections>
                                 </textFieldCell>
                             </textField>
                         </subviews>
@@ -833,7 +830,7 @@
                 </viewController>
                 <customObject id="WBz-yr-bV0" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1582" y="340"/>
+            <point key="canvasLocation" x="1582" y="395"/>
         </scene>
         <!--Bottom Left View Controller-->
         <scene sceneID="Ynv-64-76V">
@@ -860,6 +857,9 @@
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="windowBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                    <connections>
+                                        <action selector="xsltInputAction:" target="YjN-w4-CaH" id="Psn-Fu-Vbg"/>
+                                    </connections>
                                 </textFieldCell>
                             </textField>
                         </subviews>
@@ -879,7 +879,7 @@
                 </viewController>
                 <customObject id="vCX-cE-3bL" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1582" y="724"/>
+            <point key="canvasLocation" x="1582" y="779"/>
         </scene>
         <!--Split View Controller-->
         <scene sceneID="nFz-EI-mBu">
@@ -889,7 +889,7 @@
                         <splitViewItem id="XDe-WM-T1q"/>
                         <splitViewItem id="7W4-gj-Jwq"/>
                     </splitViewItems>
-                    <splitView key="splitView" dividerStyle="thin" id="H6E-eR-ndK">
+                    <splitView key="splitView" id="H6E-eR-ndK">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <connections>
@@ -911,7 +911,7 @@
             <objects>
                 <viewController id="Y6c-YC-zOJ" customClass="TopRightViewController" customModule="XSLT_Studio" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="NXh-gd-TF1">
-                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="490"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <textField horizontalHuggingPriority="249" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="dd1-Vs-lPh">
@@ -926,23 +926,23 @@
                                 </textFieldCell>
                             </textField>
                             <scrollView appearanceType="aqua" borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NG1-In-3aT">
-                                <rect key="frame" x="0.0" y="0.0" width="450" height="280"/>
+                                <rect key="frame" x="0.0" y="0.0" width="450" height="470"/>
                                 <clipView key="contentView" copiesOnScroll="NO" id="FEH-LU-YcO">
-                                    <rect key="frame" x="0.0" y="0.0" width="450" height="280"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="450" height="470"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <textView verticallyResizable="YES" usesFontPanel="YES" usesInspectorBar="YES" findStyle="bar" allowsDocumentBackgroundColorChange="YES" usesRuler="YES" spellingCorrection="YES" smartInsertDelete="YES" id="KCF-WV-334">
+                                        <textView verticallyResizable="YES" usesFontPanel="YES" usesInspectorBar="YES" findStyle="bar" usesRuler="YES" textCompletion="NO" smartInsertDelete="YES" id="KCF-WV-334">
                                             <rect key="frame" x="0.0" y="0.0" width="450" height="588"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            <color key="backgroundColor" name="findHighlightColor" catalog="System" colorSpace="catalog"/>
-                                            <size key="minSize" width="450" height="280"/>
-                                            <size key="maxSize" width="457" height="10000000"/>
+                                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="alternatingContentBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            <size key="minSize" width="450" height="470"/>
+                                            <size key="maxSize" width="459" height="10000000"/>
                                             <attributedString key="textStorage">
                                                 <fragment>
                                                     <mutableString key="content">aso asdf askjdf akjsdfh aldkfh aksdjfh aso asdf askjdf akjsdfh aldkfh aksdjfhaso asdf askjdf akjsdfh aldkfh aksdjfhaso asdf askjdf akjsdfh aldkfh aksdjfhaso asdf askjdf akjsdfh aldkfh aksdjfhaso asdf askjdf akjsdfh aldkfh aksdjfhaso asdf askjdf akjsdfh aldkfh aksdjfhaso asdf askjdf akjsdfh aldkfh aksdjfh</mutableString>
                                                     <attributes>
-                                                        <color key="NSColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                         <font key="NSFont" size="12" name="Helvetica"/>
                                                         <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                     </attributes>
@@ -951,18 +951,44 @@
                                             <color key="insertionPointColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                         </textView>
                                     </subviews>
+                                    <color key="backgroundColor" name="windowBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </clipView>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="500" id="ePz-Wh-jDt"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="200" id="qKw-RI-T9l" userLabel="height = 600"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="rjZ-Kx-Uur"/>
+                                </constraints>
                                 <scroller key="verticalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="QQC-Gc-v0b">
-                                    <rect key="frame" x="434" y="0.0" width="16" height="280"/>
+                                    <rect key="frame" x="434" y="0.0" width="16" height="470"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                             </scrollView>
+                            <stackView orientation="horizontal" alignment="top" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" fixedFrame="YES" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8Rk-tA-1qr">
+                                <rect key="frame" x="2" y="473" width="33" height="17"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <beginningViews>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2pj-MZ-J9W">
+                                        <rect key="frame" x="-2" y="0.0" width="37" height="17"/>
+                                        <textFieldCell key="cell" lineBreakMode="clipping" title="Result" id="RaU-dg-ONp">
+                                            <font key="font" metaFont="system"/>
+                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                </beginningViews>
+                                <visibilityPriorities>
+                                    <integer value="1000"/>
+                                </visibilityPriorities>
+                                <customSpacing>
+                                    <real value="3.4028234663852886e+38"/>
+                                </customSpacing>
+                            </stackView>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="dd1-Vs-lPh" firstAttribute="top" secondItem="NXh-gd-TF1" secondAttribute="top" id="1Yr-YB-Ywp"/>
+                            <constraint firstItem="dd1-Vs-lPh" firstAttribute="top" secondItem="NXh-gd-TF1" secondAttribute="top" constant="190" id="1Yr-YB-Ywp"/>
                             <constraint firstAttribute="bottom" secondItem="NG1-In-3aT" secondAttribute="bottom" id="BFJ-Gz-u7c"/>
                             <constraint firstItem="NG1-In-3aT" firstAttribute="leading" secondItem="NXh-gd-TF1" secondAttribute="leading" id="Kbl-0l-cHD"/>
-                            <constraint firstItem="NG1-In-3aT" firstAttribute="top" secondItem="dd1-Vs-lPh" secondAttribute="bottom" constant="3" id="RxR-t5-rX8"/>
+                            <constraint firstItem="NG1-In-3aT" firstAttribute="top" secondItem="dd1-Vs-lPh" secondAttribute="bottom" constant="-187" id="RxR-t5-rX8"/>
                             <constraint firstAttribute="trailing" secondItem="NG1-In-3aT" secondAttribute="trailing" id="Y71-cX-wok"/>
                             <constraint firstAttribute="trailing" secondItem="dd1-Vs-lPh" secondAttribute="trailing" id="ahm-Lm-ggg"/>
                             <constraint firstItem="dd1-Vs-lPh" firstAttribute="leading" secondItem="NXh-gd-TF1" secondAttribute="leading" id="cce-ED-6NT"/>
@@ -975,7 +1001,7 @@
                 </viewController>
                 <customObject id="iwc-pi-hDk" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1582" y="1131"/>
+            <point key="canvasLocation" x="1582" y="1255"/>
         </scene>
         <!--Bottom Right View Controller-->
         <scene sceneID="Q7P-QC-Y73">
@@ -998,6 +1024,10 @@
                             </textField>
                             <wkWebView wantsLayer="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rY8-Dj-DpP">
                                 <rect key="frame" x="0.0" y="0.0" width="450" height="280"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="300" id="7iJ-qF-G7J"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="450" id="r7g-oy-ziq"/>
+                                </constraints>
                                 <wkWebViewConfiguration key="configuration">
                                     <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
                                     <wkPreferences key="preferences"/>
@@ -1020,7 +1050,7 @@
                 </viewController>
                 <customObject id="aa7-z6-fgK" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1582" y="1503"/>
+            <point key="canvasLocation" x="1582" y="1834"/>
         </scene>
     </scenes>
 </document>
