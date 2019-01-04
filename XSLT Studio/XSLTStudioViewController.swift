@@ -51,8 +51,8 @@
                                 
                                 do {
                                     let o = try xmlXml.object(byApplyingXSLTString: self.blvc.xsltInput.stringValue, arguments: ["author": "Freek"]) as? XMLDocument
-                                    print("html:")
-                                    print(o?.canonicalXMLStringPreservingComments(true) ?? "niks" )
+                                    //print("html:")
+                                    //print(o?.canonicalXMLStringPreservingComments(true) ?? "niks" )
                                     self.trvc.textView.string = o?.xmlString(options: .nodePrettyPrint ) ?? "No result"
                                     //webView.loadHTMLString(st, baseURL: nil)
                                     if let st = o?.xmlString(options: .documentTidyHTML) {
