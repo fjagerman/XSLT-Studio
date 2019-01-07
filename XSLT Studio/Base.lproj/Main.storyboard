@@ -797,29 +797,51 @@
                                     <real value="3.4028234663852886e+38"/>
                                 </customSpacing>
                             </stackView>
-                            <textField verticalHuggingPriority="248" verticalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="P1h-gh-E1J">
-                                <rect key="frame" x="0.0" y="0.0" width="450" height="283"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="100" id="thd-6a-bVi"/>
-                                </constraints>
-                                <textFieldCell key="cell" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" title="Dit wordt de inputtext" drawsBackground="YES" id="XaD-Hg-lN4">
-                                    <font key="font" usesAppearanceFont="YES"/>
-                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="windowBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                    <connections>
-                                        <action selector="xmlInputAction:" target="PTB-oZ-PWu" id="X59-X7-8iJ"/>
-                                    </connections>
-                                </textFieldCell>
-                            </textField>
+                            <scrollView horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bmb-6n-sqN">
+                                <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                                <clipView key="contentView" id="MqZ-Ct-sdq">
+                                    <rect key="frame" x="1" y="1" width="448" height="298"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <textField verticalHuggingPriority="248" verticalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="P1h-gh-E1J">
+                                            <rect key="frame" x="0.0" y="0.0" width="448" height="100"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="100" id="thd-6a-bVi"/>
+                                            </constraints>
+                                            <textFieldCell key="cell" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" title="Dit wordt de inputtext" drawsBackground="YES" id="XaD-Hg-lN4">
+                                                <font key="font" usesAppearanceFont="YES"/>
+                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="windowBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                <connections>
+                                                    <action selector="xmlInputAction:" target="PTB-oZ-PWu" id="X59-X7-8iJ"/>
+                                                </connections>
+                                            </textFieldCell>
+                                        </textField>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="P1h-gh-E1J" firstAttribute="top" secondItem="MqZ-Ct-sdq" secondAttribute="top" id="SE9-ug-yaZ"/>
+                                        <constraint firstItem="P1h-gh-E1J" firstAttribute="leading" secondItem="MqZ-Ct-sdq" secondAttribute="leading" id="fH5-ts-uYw"/>
+                                        <constraint firstAttribute="trailing" secondItem="P1h-gh-E1J" secondAttribute="trailing" id="gnf-dq-kEm"/>
+                                    </constraints>
+                                </clipView>
+                                <scroller key="horizontalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="Qlt-QG-RAw">
+                                    <rect key="frame" x="1" y="283" width="448" height="16"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
+                                <scroller key="verticalScroller" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="56h-ln-BRK">
+                                    <rect key="frame" x="433" y="1" width="16" height="298"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
+                            </scrollView>
                         </subviews>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="tBA-Y1-8d9" secondAttribute="trailing" id="1Qn-Gt-bf7"/>
-                            <constraint firstAttribute="bottom" secondItem="P1h-gh-E1J" secondAttribute="bottom" id="BnD-Wi-rYy"/>
+                            <constraint firstItem="bmb-6n-sqN" firstAttribute="top" secondItem="hIb-rj-Xid" secondAttribute="top" id="7nc-Ch-tfM"/>
                             <constraint firstItem="tBA-Y1-8d9" firstAttribute="leading" secondItem="hIb-rj-Xid" secondAttribute="leading" id="JSK-SN-Gxt"/>
+                            <constraint firstAttribute="trailing" secondItem="bmb-6n-sqN" secondAttribute="trailing" id="aDj-E9-5uW"/>
                             <constraint firstItem="tBA-Y1-8d9" firstAttribute="top" secondItem="hIb-rj-Xid" secondAttribute="top" id="awM-Wa-aft"/>
-                            <constraint firstItem="P1h-gh-E1J" firstAttribute="top" secondItem="tBA-Y1-8d9" secondAttribute="bottom" id="fqD-rr-DFs"/>
-                            <constraint firstAttribute="trailing" secondItem="P1h-gh-E1J" secondAttribute="trailing" id="qd4-Pu-k51"/>
-                            <constraint firstItem="P1h-gh-E1J" firstAttribute="leading" secondItem="hIb-rj-Xid" secondAttribute="leading" id="ztj-dt-JtY"/>
+                            <constraint firstItem="bmb-6n-sqN" firstAttribute="leading" secondItem="hIb-rj-Xid" secondAttribute="leading" id="bxP-av-cTq"/>
+                            <constraint firstAttribute="bottom" secondItem="bmb-6n-sqN" secondAttribute="bottom" id="glP-WE-gEj"/>
                         </constraints>
                     </view>
                     <connections>
