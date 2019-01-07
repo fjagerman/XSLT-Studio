@@ -860,37 +860,70 @@
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <textField horizontalHuggingPriority="249" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="2ke-TF-gzT">
+                            <stackView distribution="fill" orientation="vertical" alignment="leading" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dC9-w2-qgl">
                                 <rect key="frame" x="0.0" y="283" width="450" height="17"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="17" id="fJC-wD-4bo"/>
-                                </constraints>
-                                <textFieldCell key="cell" lineBreakMode="clipping" title=" XSLT" drawsBackground="YES" id="QRb-NZ-XdU">
-                                    <font key="font" usesAppearanceFont="YES"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                            <textField horizontalHuggingPriority="247" verticalHuggingPriority="248" verticalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="KZd-7F-km9">
+                                <subviews>
+                                    <textField horizontalHuggingPriority="249" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="2ke-TF-gzT">
+                                        <rect key="frame" x="0.0" y="0.0" width="450" height="17"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="17" id="fJC-wD-4bo"/>
+                                        </constraints>
+                                        <textFieldCell key="cell" lineBreakMode="clipping" title=" XSLT" drawsBackground="YES" id="QRb-NZ-XdU">
+                                            <font key="font" usesAppearanceFont="YES"/>
+                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                </subviews>
+                                <visibilityPriorities>
+                                    <integer value="1000"/>
+                                </visibilityPriorities>
+                                <customSpacing>
+                                    <real value="3.4028234663852886e+38"/>
+                                </customSpacing>
+                            </stackView>
+                            <scrollView horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rKz-gv-WgS">
                                 <rect key="frame" x="0.0" y="0.0" width="450" height="283"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" title="Dit wordt de XSLT" drawsBackground="YES" id="etE-EA-5uD">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="windowBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                    <connections>
-                                        <action selector="xsltInputAction:" target="YjN-w4-CaH" id="Psn-Fu-Vbg"/>
-                                    </connections>
-                                </textFieldCell>
-                            </textField>
+                                <clipView key="contentView" id="IaJ-1i-o1c">
+                                    <rect key="frame" x="1" y="1" width="448" height="281"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <textField horizontalHuggingPriority="247" verticalHuggingPriority="248" verticalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="KZd-7F-km9">
+                                            <rect key="frame" x="0.0" y="0.0" width="448" height="22"/>
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" title="Dit wordt de XSLT" drawsBackground="YES" id="etE-EA-5uD">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="windowBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                <connections>
+                                                    <action selector="xsltInputAction:" target="YjN-w4-CaH" id="Psn-Fu-Vbg"/>
+                                                </connections>
+                                            </textFieldCell>
+                                        </textField>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="KZd-7F-km9" secondAttribute="trailing" id="D6M-yA-WiY"/>
+                                        <constraint firstItem="KZd-7F-km9" firstAttribute="leading" secondItem="IaJ-1i-o1c" secondAttribute="leading" id="EgL-B3-zGw"/>
+                                        <constraint firstItem="KZd-7F-km9" firstAttribute="top" secondItem="IaJ-1i-o1c" secondAttribute="top" id="lrf-Sz-8ma"/>
+                                    </constraints>
+                                </clipView>
+                                <scroller key="horizontalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="lMb-4W-z8i">
+                                    <rect key="frame" x="1" y="266" width="448" height="16"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
+                                <scroller key="verticalScroller" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="rF2-ui-1TN">
+                                    <rect key="frame" x="433" y="1" width="16" height="281"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
+                            </scrollView>
                         </subviews>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="KZd-7F-km9" secondAttribute="bottom" id="MIT-vs-8S8"/>
-                            <constraint firstItem="KZd-7F-km9" firstAttribute="leading" secondItem="0Cs-44-ahc" secondAttribute="leading" id="S4h-XG-5Rg"/>
-                            <constraint firstItem="2ke-TF-gzT" firstAttribute="leading" secondItem="0Cs-44-ahc" secondAttribute="leading" id="fQM-ME-MND"/>
-                            <constraint firstAttribute="trailing" secondItem="2ke-TF-gzT" secondAttribute="trailing" id="jtl-dK-QPt"/>
-                            <constraint firstItem="2ke-TF-gzT" firstAttribute="top" secondItem="0Cs-44-ahc" secondAttribute="top" id="rTg-Sj-AQL"/>
-                            <constraint firstItem="KZd-7F-km9" firstAttribute="top" secondItem="2ke-TF-gzT" secondAttribute="bottom" id="rm9-Be-8vG"/>
-                            <constraint firstAttribute="trailing" secondItem="KZd-7F-km9" secondAttribute="trailing" id="vCq-qb-oeO"/>
+                            <constraint firstItem="rKz-gv-WgS" firstAttribute="top" secondItem="dC9-w2-qgl" secondAttribute="bottom" id="07S-4T-z3g"/>
+                            <constraint firstItem="dC9-w2-qgl" firstAttribute="top" secondItem="0Cs-44-ahc" secondAttribute="top" id="8RV-4b-yTR"/>
+                            <constraint firstAttribute="trailing" secondItem="dC9-w2-qgl" secondAttribute="trailing" id="KAY-va-KIK"/>
+                            <constraint firstAttribute="bottom" secondItem="rKz-gv-WgS" secondAttribute="bottom" id="L1S-Wd-Klw"/>
+                            <constraint firstItem="dC9-w2-qgl" firstAttribute="leading" secondItem="0Cs-44-ahc" secondAttribute="leading" id="YaH-0g-06F"/>
+                            <constraint firstAttribute="trailing" secondItem="rKz-gv-WgS" secondAttribute="trailing" id="uvh-uZ-ADo"/>
+                            <constraint firstItem="rKz-gv-WgS" firstAttribute="leading" secondItem="0Cs-44-ahc" secondAttribute="leading" id="xNb-Hi-fRn"/>
                         </constraints>
                     </view>
                     <connections>
