@@ -14,6 +14,7 @@
             }
             
             class XSLTStudioViewController: NSSplitViewController {
+                var document: Document?
                 var tlvc: TopLeftViewController!
                 var blvc: BottomLeftViewController!
                 var trvc: TopRightViewController!
@@ -37,6 +38,8 @@
                     let url = URL(fileReferenceLiteralResourceName: "w3schools.xml")
                     
                     let xslt = URL(fileReferenceLiteralResourceName: "w3schools.xslt")
+                    print("loaded XML:")
+                    print(document?.xml?.canonicalXMLStringPreservingComments(true) ?? "niks" )
                     observer = NotificationCenter.default.addObserver(
                         forName: Notification.Name.XsltStudioDocumentChanged, // the name of the radio station
                         object: nil, // the broadcaster (or nil for “anyone”)
