@@ -14,8 +14,18 @@
             }
             
             class XSLTStudioViewController: NSSplitViewController {
-                var document: Document?
+                
+                var xmlXml: XMLDocument?
+                
+                var document: Document? {
+                    return representedObject as? Document
+                }
+                
                 var tlvc: TopLeftViewController!
+                // No need to unregister any old observer: by using the observer-propery we take care of this atomatically
+                
+                
+                
                 var blvc: BottomLeftViewController!
                 var trvc: TopRightViewController!
                 var brvc: BottomRightViewController!
@@ -31,103 +41,127 @@
                     // Do any additional setup after loading the view.
                 }
                 // MARK: - Notification Observer
-                var observer: NSObjectProtocol? // a cookie to later “stop listening” with
+                var docObserver: NSObjectProtocol? // a cookie to later “stop listening” with
+                var topLeftObserver: NSObjectProtocol? // a cookie to later “stop listening” with
+                var bottomLeftObserver: NSObjectProtocol? // a cookie to later “stop listening” with
                 
                 override func viewWillAppear() {
                     // Input files:
-                    let url = URL(fileReferenceLiteralResourceName: "w3schools.xml")
+                    //let url = URL(fileReferenceLiteralResourceName: "w3schools.xml")
+                    //let xslt = URL(fileReferenceLiteralResourceName: "w3schools.xslt")
+                    //print("loaded XML:")
+                    ///print(document?.content?.xml ?? "xml = nil" )
                     
-                    let xslt = URL(fileReferenceLiteralResourceName: "w3schools.xslt")
-                    print("loaded XML:")
-                    print(document?.xml?.canonicalXMLStringPreservingComments(true) ?? "niks" )
-                    observer = NotificationCenter.default.addObserver(
-                        forName: Notification.Name.XsltStudioDocumentChanged, // the name of the radio station
-                        object: nil, // the broadcaster (or nil for “anyone”)
-                        queue: OperationQueue.main // the queue on which to dispatch the closure below
-                    ) { (notification: Notification) -> Void in // closure executed when broadcasts occur
-                        //let info: Any? = notification.userInfo
-                        // info is usually a dictionary of notification-specific information
-                        do {
-                            let xmlXml = try XMLDocument(xmlString: self.tlvc.xmlInput.stringValue, options: .documentTidyXML)
-                            do {
-                                let _ = try XMLDocument(xmlString: self.blvc.xsltInput.stringValue, options: .documentTidyXML )
-                                
-                                do {
-                                    let o = try xmlXml.object(byApplyingXSLTString: self.blvc.xsltInput.stringValue, arguments: ["author": "Freek"]) as? XMLDocument
-                                    //print("html:")
-                                    //print(o?.canonicalXMLStringPreservingComments(true) ?? "niks" )
-                                    self.trvc.textView.string = o?.xmlString(options: .nodePrettyPrint ) ?? "No result"
-                                    //webView.loadHTMLString(st, baseURL: nil)
-                                    if let st = o?.xmlString(options: .documentTidyHTML) {
-                                        self.brvc.webView.loadHTMLString(st, baseURL: nil)
-                                    }
+                    // Hook-up the four viewconrollers
+                    
+                    if let lvc = splitViewItems[0].viewController as? NSSplitViewController {
+                        tlvc = lvc.splitViewItems[0].viewController as? TopLeftViewController
+                        // Assign objserver for XML-changes
+                        // (No need to unregister any old observer: by using the observer-propery we take care of this atomatically)
+                        topLeftObserver = NotificationCenter.default.addObserver(
+                            forName: Notification.Name.XsltStudioDocumentChanged, // the name of the radio station
+                            object: tlvc, // the broadcaster is the topLeftViewController. This  means: the XML has changed
+                            queue: OperationQueue.main // the queue on which to dispatch the closure below
+                        ) { (notification: Notification) -> Void in // closure executed when broadcasts occur
+                            if let newval = self.tlvc.xmlInput?.stringValue {
+                                if self.document?.content?.xml != newval {
+                                    // actual user input: update and notify the document
+                                    self.document?.content?.xml = newval
+                                    self.refresh()
+                                    self.document?.updateChangeCount(.changeDone)
                                 }
-                                catch {
-                                    print("XSLT translation failed: \(error)")
+                            }
+                        }
+                        
+                        blvc = lvc.splitViewItems[1].viewController as? BottomLeftViewController
+                        
+                        //Assign observdr or XSLT-changes
+                        bottomLeftObserver = NotificationCenter.default.addObserver(
+                            forName: Notification.Name.XsltStudioDocumentChanged, // the name of the radio station
+                            object: blvc, // the broadcaster is the topLeftViewController. This  means: the XML has changed
+                            queue: OperationQueue.main // the queue on which to dispatch the closure below
+                        ) { (notification: Notification) -> Void in // closure executed when broadcasts occur
+                            if let newval = self.blvc.xsltInput?.stringValue {
+                                if self.document?.content?.xslt != newval {
+                                    // actual user input: update and notify the document
+                                    self.document?.content?.xslt = newval
+                                    self.refresh()
+                                    self.document?.updateChangeCount(.changeDone)
+                                }
+                            }
+                        }
+                    }
+                    
+                    if let rightViewController = splitViewItems[1].viewController as? NSSplitViewController {
+                        trvc = rightViewController.splitViewItems[0].viewController as? TopRightViewController
+                        brvc = rightViewController.splitViewItems[1].viewController as? BottomRightViewController
+                        refresh()
+                    }
+                }
+                
+                
+                
+                func refresh() {
+                    if let xmlString = document?.content?.xml, let xsltString = document?.content?.xslt {
+                        tlvc.xmlInput.stringValue = xmlString
+                        blvc.xsltInput.stringValue = xsltString
+                        do {
+                            xmlXml = try XMLDocument(xmlString: xmlString, options: .documentTidyXML)
+                            if let st = xmlXml?.xmlString(options: .nodePrettyPrint ) {
+                                tlvc.xmlInput.stringValue = st
+                            }
+                            do {
+                                let xsltXml = try XMLDocument(xmlString: xsltString, options: .documentTidyXML )
+                                blvc.xsltInput.stringValue = xsltXml.xmlString(options: .nodePrettyPrint )
+                                if trvc != nil && brvc != nil {
+                                    if let xml = xmlXml, let xslt = document?.content?.xslt {
+                                        do {
+                                            if let o = try xml.object(byApplyingXSLTString: xslt, arguments: ["author": "Freek"]) as? XMLDocument {
+                                                trvc.textView.string = o.xmlString(options: .nodePrettyPrint )
+                                                //webView.loadHTMLString(st, baseURL: nil)
+                                                self.brvc.webView.loadHTMLString(o.xmlString(options: .documentTidyHTML), baseURL: nil)
+                                            }
+                                        }
+                                        catch {
+                                            print("Object by applying XSLT string failed: \(error)")
+                                            self.trvc.textView.string = "XSLT is not valid: \(error)"
+                                            self.brvc.webView.loadHTMLString("", baseURL: nil)
+                                        }
+                                    }
                                 }
                             }
                             catch {
-                                print("XSLT is not valid: \(error)")
+                                print("XSLT is not a valid XML: \(error)")
                             }
                         }
                         catch {
                             print("XML is not valid: \(error)")
                         }
                     }
-                    
-                    
-                    //var xsltObservation = blvc.observe(
-                    
-                    // Hook-up the four viewconrollers
-                    
-                    if let lvc = splitViewItems[0].viewController as? NSSplitViewController {
-                        tlvc = lvc.splitViewItems[0].viewController as? TopLeftViewController
-                        blvc = lvc.splitViewItems[1].viewController as? BottomLeftViewController
-                    }
-                    
-                    if let rightViewController = splitViewItems[1].viewController as? NSSplitViewController {
-                        trvc = rightViewController.splitViewItems[0].viewController as? TopRightViewController
-                        brvc = rightViewController.splitViewItems[1].viewController as? BottomRightViewController
-                    }
-                    
-                    // Step 1: Read the XML into the first view
-                    do {
-                        let docje = try XMLDocument(contentsOf: url, options: .documentTidyXML)
-                        //print("docje.rootElement(): \(docje.rootElement()?.xPath ?? "niks")")
-                        
-                        tlvc.xmlInput.stringValue = docje.rootElement()?.xmlString(options: .nodePrettyPrint) ?? "No XML found"
-                        
-                        //print("docje.xmlString(.rootElement()?.nodePrettyPrint): \(docje.rootElement()?.xmlString(options: .nodePrettyPrint) ?? "niks")")
-                        
-                        //print("docje.: \(String(describing: try? docje.nodes(forXPath: "/gpx/wpt").description ))")
-                        
-                        //: XSLT translatie naar HTMLX
-                        //  <tr align="right"><td>hoi</td><td><xsl:value-of select="@lat"/></td><td><xsl:value-of select="@lon"/></td>
-                        
-                        // Step 2: Load XSLT
-                        
-                        do {
-                            let docje2 = try XMLDocument(contentsOf: xslt, options: .documentTidyXML)
-                            //print("docje.rootElement(): \(docje.rootElement()?.xPath ?? "niks")")
-                            
-                            blvc.xsltInput.stringValue = docje2.rootElement()?.xmlString(options: .nodePrettyPrint) ?? "No XSLT found"
-                            
-                            // Step3 : Run translation and generate output
-                            NotificationCenter.default.post(name: Notification.Name("XsltStudioDocumentChanged"), object: self)
-                        }
-                        catch {
-                            print("Loading XSLT failed: \(error)")
-                        }
-                    }
-                    catch {
-                        print("Loading XML failed: \(error)")
-                    }
                 }
+                
                 
                 override var representedObject: Any? {
                     didSet {
                         // Update the view, if already loaded.
+                        // Pass down the represented object to all of the child view controllers.
+                        // saple code provided tis loop, but we keep all logic in this viewcontoller:
+                        /*
+                         for child in children {
+                         child.representedObject = representedObject
+                         } */
+                        // No need to unregister any old observer: by using the observer-propery we take care of this atomatically
+                        docObserver = NotificationCenter.default.addObserver(
+                            forName: Notification.Name.XsltStudioDocumentChanged, // the name of the radio station
+                            object: representedObject, // the broadcaster is the document. This means: a file was read
+                            queue: OperationQueue.main // the queue on which to dispatch the closure below
+                        ) { (notification: Notification) -> Void in // closure executed when broadcasts occur
+                            //let info: Any? = notification.userInfo
+                            // info is usually a dictionary of notification-specific information
+                            self.refresh()
+                        }
                     }
                 }
+                
             }
             

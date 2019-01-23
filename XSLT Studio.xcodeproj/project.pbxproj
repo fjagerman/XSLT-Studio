@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9541CDB321F5D52D00A9DC41 /* XsltStudioProject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9541CDB221F5D52D00A9DC41 /* XsltStudioProject.swift */; };
 		95923E5721D56425005FCD24 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95923E5621D56425005FCD24 /* AppDelegate.swift */; };
 		95923E5921D56425005FCD24 /* XSLTStudioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95923E5821D56425005FCD24 /* XSLTStudioViewController.swift */; };
 		95923E5B21D56425005FCD24 /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95923E5A21D56425005FCD24 /* Document.swift */; };
@@ -24,6 +25,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9541CDB221F5D52D00A9DC41 /* XsltStudioProject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XsltStudioProject.swift; sourceTree = "<group>"; };
 		95923E5321D56425005FCD24 /* XSLT Studio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "XSLT Studio.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		95923E5621D56425005FCD24 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		95923E5821D56425005FCD24 /* XSLTStudioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XSLTStudioViewController.swift; sourceTree = "<group>"; };
@@ -74,6 +76,7 @@
 		95923E5521D56425005FCD24 /* XSLT Studio */ = {
 			isa = PBXGroup;
 			children = (
+				9541CDB221F5D52D00A9DC41 /* XsltStudioProject.swift */,
 				95D8A9E321DCDC0E0004285C /* TopLeftViewController.swift */,
 				95D8A9E921DD01F90004285C /* TopRightViewController.swift */,
 				95D8A9E521DCDCA60004285C /* BottomLeftViewController.swift */,
@@ -188,6 +191,7 @@
 				95D8A9EB21DD01F90004285C /* TopRightViewController.swift in Sources */,
 				95923E5921D56425005FCD24 /* XSLTStudioViewController.swift in Sources */,
 				95923E5721D56425005FCD24 /* AppDelegate.swift in Sources */,
+				9541CDB321F5D52D00A9DC41 /* XsltStudioProject.swift in Sources */,
 				95D8A9E421DCDC0E0004285C /* TopLeftViewController.swift in Sources */,
 				95D8A9E621DCDCA60004285C /* BottomLeftViewController.swift in Sources */,
 				95923E5B21D56425005FCD24 /* Document.swift in Sources */,
