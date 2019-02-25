@@ -31,8 +31,8 @@
                 var brvc: BottomRightViewController!
                 
                 // MARK: - Outlets
-                @IBOutlet weak var leftSplitview: NSSplitView!
-                @IBOutlet weak var rightSplitview: NSSplitViewItem!
+                //@IBOutlet weak var leftSplitview: NSSplitView!
+                //@IBOutlet weak var rightSplitview: NSSplitViewItem!
                 
                 // MARK: - LifeCycle
                 override func viewDidLoad() {
@@ -56,7 +56,7 @@
                     
                     if let lvc = splitViewItems[0].viewController as? NSSplitViewController {
                         tlvc = lvc.splitViewItems[0].viewController as? TopLeftViewController
-                        // Assign objserver for XML-changes
+                        // Assign observer for XML-changes
                         // (No need to unregister any old observer: by using the observer-propery we take care of this atomatically)
                         topLeftObserver = NotificationCenter.default.addObserver(
                             forName: Notification.Name.XsltStudioDocumentChanged, // the name of the radio station
@@ -75,7 +75,7 @@
                         
                         blvc = lvc.splitViewItems[1].viewController as? BottomLeftViewController
                         
-                        //Assign observdr or XSLT-changes
+                        //Assign observer for XSLT-changes
                         bottomLeftObserver = NotificationCenter.default.addObserver(
                             forName: Notification.Name.XsltStudioDocumentChanged, // the name of the radio station
                             object: blvc, // the broadcaster is the topLeftViewController. This  means: the XML has changed

@@ -808,7 +808,7 @@
                                             <constraints>
                                                 <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="100" id="thd-6a-bVi"/>
                                             </constraints>
-                                            <textFieldCell key="cell" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" title="Dit wordt de inputtext" drawsBackground="YES" id="XaD-Hg-lN4">
+                                            <textFieldCell key="cell" selectable="YES" editable="YES" continuous="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" placeholderString="Dit wordt de inputtekst" drawsBackground="YES" id="XaD-Hg-lN4">
                                                 <font key="font" usesAppearanceFont="YES"/>
                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="windowBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -890,7 +890,7 @@
                                     <subviews>
                                         <textField horizontalHuggingPriority="247" verticalHuggingPriority="248" verticalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="KZd-7F-km9">
                                             <rect key="frame" x="0.0" y="0.0" width="448" height="22"/>
-                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" title="Dit wordt de XSLT" drawsBackground="YES" id="etE-EA-5uD">
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" placeholderString="Dit wordt de XSLT" drawsBackground="YES" id="etE-EA-5uD">
                                                 <font key="font" metaFont="system"/>
                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="windowBackgroundColor" catalog="System" colorSpace="catalog"/>
