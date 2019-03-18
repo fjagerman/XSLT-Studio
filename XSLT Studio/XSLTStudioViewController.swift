@@ -111,15 +111,16 @@
                                 tlvc.xmlInput.stringValue = st
                             }
                             do {
-                                let xsltXml = try XMLDocument(xmlString: xsltString, options: .documentTidyXML )
-                                blvc.xsltInput.stringValue = xsltXml.xmlString(options: .nodePrettyPrint )
-                                if trvc != nil && brvc != nil {
-                                    if let xml = xmlXml, let xslt = document?.content?.xslt {
+                                let xsltXml = try XMLDocument(xmlString: xsltString, options: [.documentTidyXML, .nodePreserveWhitespace] )
+                                blvc.xsltInput.stringValue = xsltXml.xmlString(options: [.nodePrettyPrint, .nodeCompactEmptyElement] )
+                                let xsltCompact = xsltXml.xmlString(options: .nodePreserveWhitespace )
+                                if trvc != nil && brvc != nil && document?.content?.xslt != nil {
+                                    if let xml = xmlXml {
                                         do {
-                                            if let o = try xml.object(byApplyingXSLTString: xslt, arguments: ["author": "Freek"]) as? XMLDocument {
-                                                trvc.textView.string = o.xmlString(options: .nodePrettyPrint )
+                                            if let o = try xml.object(byApplyingXSLTString: xsltCompact, arguments: ["author": "Freek"]) as? XMLDocument {
+                                                trvc.textView.string = o.xmlString(options: [.nodePrettyPrint, .nodeCompactEmptyElement, .nodePreserveWhitespace] )
                                                 //webView.loadHTMLString(st, baseURL: nil)
-                                                self.brvc.webView.loadHTMLString(o.xmlString(options: .documentTidyHTML), baseURL: nil)
+                                                self.brvc.webView.loadHTMLString(o.xmlString(options: [.documentTidyHTML, .nodePreserveWhitespace, .nodeCompactEmptyElement]), baseURL: nil)
                                             }
                                         }
                                         catch {
