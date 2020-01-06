@@ -34,6 +34,7 @@
 		95923E5F21D56426005FCD24 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		95923E6121D56426005FCD24 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		95923E6221D56426005FCD24 /* XSLT_Studio.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = XSLT_Studio.entitlements; sourceTree = "<group>"; };
+		95B505A2222DB90000D530A1 /* test.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = test.gpx; path = ../../../../Desktop/test.gpx; sourceTree = "<group>"; };
 		95D8A9CF21DCC4040004285C /* w3schools.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = w3schools.xml; sourceTree = "<group>"; };
 		95D8A9D021DCC4040004285C /* arnhem_oldebroek.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = arnhem_oldebroek.gpx; sourceTree = "<group>"; };
 		95D8A9D121DCC4040004285C /* XMLSchema.xsd.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = XMLSchema.xsd.xml; sourceTree = "<group>"; };
@@ -83,6 +84,7 @@
 				95D8A9ED21DD02220004285C /* BottomRightViewController.swift */,
 				95923E5621D56425005FCD24 /* AppDelegate.swift */,
 				95923E5821D56425005FCD24 /* XSLTStudioViewController.swift */,
+				95B505A2222DB90000D530A1 /* test.gpx */,
 				95923E5A21D56425005FCD24 /* Document.swift */,
 				95923E5C21D56426005FCD24 /* Assets.xcassets */,
 				95923E5E21D56426005FCD24 /* Main.storyboard */,
@@ -139,11 +141,12 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1010;
-				LastUpgradeCheck = 1010;
+				LastUpgradeCheck = 1110;
 				ORGANIZATIONNAME = "Jagerman Services";
 				TargetAttributes = {
 					95923E5221D56425005FCD24 = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1020;
 					};
 				};
 			};
@@ -331,6 +334,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = P88BQ27E4Z;
@@ -341,7 +345,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "Freek-Jagerman.XSLT-Studio";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -349,6 +353,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = P88BQ27E4Z;
@@ -359,7 +364,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "Freek-Jagerman.XSLT-Studio";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};

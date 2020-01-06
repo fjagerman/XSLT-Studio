@@ -100,7 +100,7 @@
                 }
                 
                 
-                
+                // This is where all the magic happens:
                 func refresh() {
                     if let xmlString = document?.content?.xml, let xsltString = document?.content?.xslt {
                         tlvc.xmlInput.stringValue = xmlString
