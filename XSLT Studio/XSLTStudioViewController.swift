@@ -108,10 +108,12 @@
                         do {
                             xmlXml = try XMLDocument(xmlString: xmlString, options: .documentTidyXML)
                             if let st = xmlXml?.xmlString(options: .nodePrettyPrint ) {
+                                // Overwrite top left with PrettyPrinted version
                                 tlvc.xmlInput.stringValue = st
                             }
                             do {
                                 let xsltXml = try XMLDocument(xmlString: xsltString, options: [.documentTidyXML, .nodePreserveWhitespace] )
+                                // Overwrite bottom right with PrettyPrindet version (may cause cleanup of the xslt)
                                 blvc.xsltInput.stringValue = xsltXml.xmlString(options: [.nodePrettyPrint, .nodeCompactEmptyElement] )
                                 let xsltCompact = xsltXml.xmlString(options: .nodePreserveWhitespace )
                                 if trvc != nil && brvc != nil && document?.content?.xslt != nil {

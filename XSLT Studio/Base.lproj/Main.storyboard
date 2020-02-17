@@ -986,37 +986,28 @@
                                     <real value="3.4028234663852886e+38"/>
                                 </customSpacing>
                             </stackView>
-                            <scrollView appearanceType="aqua" verticalCompressionResistancePriority="250" borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NG1-In-3aT">
+                            <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vKY-bb-tc2">
                                 <rect key="frame" x="0.0" y="0.0" width="450" height="401"/>
-                                <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="FEH-LU-YcO">
+                                <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="SFh-QX-duL">
                                     <rect key="frame" x="0.0" y="0.0" width="450" height="401"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <textView editable="NO" drawsBackground="NO" verticallyResizable="YES" usesFontPanel="YES" findStyle="bar" textCompletion="NO" smartInsertDelete="YES" id="KCF-WV-334">
+                                        <textView importsGraphics="NO" richText="NO" verticallyResizable="YES" spellingCorrection="YES" smartInsertDelete="YES" id="Te8-UF-1on">
                                             <rect key="frame" x="0.0" y="0.0" width="450" height="401"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             <size key="minSize" width="450" height="401"/>
-                                            <size key="maxSize" width="459" height="10000000"/>
-                                            <attributedString key="textStorage">
-                                                <fragment content="TextView">
-                                                    <attributes>
-                                                        <color key="NSColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                                        <font key="NSFont" metaFont="user"/>
-                                                        <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                                    </attributes>
-                                                </fragment>
-                                            </attributedString>
+                                            <size key="maxSize" width="450" height="10000000"/>
                                             <color key="insertionPointColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                         </textView>
                                     </subviews>
                                 </clipView>
-                                <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="qxr-Oh-JLa">
-                                    <rect key="frame" x="-100" y="-100" width="450" height="16"/>
+                                <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="rc7-R2-aAd">
+                                    <rect key="frame" x="-100" y="-100" width="240" height="16"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
-                                <scroller key="verticalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="QQC-Gc-v0b">
+                                <scroller key="verticalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="dPQ-By-CuZ">
                                     <rect key="frame" x="434" y="0.0" width="16" height="401"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
@@ -1025,19 +1016,19 @@
                         <constraints>
                             <constraint firstItem="8Rk-tA-1qr" firstAttribute="top" secondItem="NXh-gd-TF1" secondAttribute="top" id="0Pj-v0-T9m"/>
                             <constraint firstItem="8Rk-tA-1qr" firstAttribute="leading" secondItem="NXh-gd-TF1" secondAttribute="leading" id="7RS-WQ-CEv"/>
-                            <constraint firstAttribute="bottom" secondItem="NG1-In-3aT" secondAttribute="bottom" id="BFJ-Gz-u7c"/>
-                            <constraint firstItem="NG1-In-3aT" firstAttribute="leading" secondItem="NXh-gd-TF1" secondAttribute="leading" id="Kbl-0l-cHD"/>
-                            <constraint firstItem="NG1-In-3aT" firstAttribute="top" secondItem="8Rk-tA-1qr" secondAttribute="bottom" id="PwX-LD-lLi"/>
-                            <constraint firstAttribute="trailing" secondItem="NG1-In-3aT" secondAttribute="trailing" id="Y71-cX-wok"/>
+                            <constraint firstAttribute="trailing" secondItem="vKY-bb-tc2" secondAttribute="trailing" id="EeB-Xu-THr"/>
+                            <constraint firstAttribute="bottom" secondItem="vKY-bb-tc2" secondAttribute="bottom" id="ITU-ho-Y9l"/>
+                            <constraint firstItem="vKY-bb-tc2" firstAttribute="leading" secondItem="NXh-gd-TF1" secondAttribute="leading" id="RBU-3A-Kix"/>
+                            <constraint firstItem="vKY-bb-tc2" firstAttribute="top" secondItem="8Rk-tA-1qr" secondAttribute="bottom" id="dsI-Xp-B5e"/>
                             <constraint firstAttribute="trailing" secondItem="8Rk-tA-1qr" secondAttribute="trailing" id="ylv-nI-8hi"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="textOutput" destination="FEH-LU-YcO" id="8Je-kP-dbl"/>
-                        <outlet property="textView" destination="KCF-WV-334" id="3nj-YD-y3i"/>
+                        <outlet property="textView" destination="Te8-UF-1on" id="Xkt-wL-RQL"/>
                     </connections>
                 </viewController>
                 <customObject id="iwc-pi-hDk" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <userDefaultsController representsSharedInstance="YES" id="mzK-rS-NWH"/>
             </objects>
             <point key="canvasLocation" x="1582" y="1255"/>
         </scene>
