@@ -117,10 +117,18 @@
                                 if trvc != nil && brvc != nil && document?.content?.xslt != nil {
                                     if let xml = xmlXml {
                                         do {
-                                            if let o = try xml.object(byApplyingXSLTString: xsltCompact, arguments: ["author": "Freek"]) as? XMLDocument {
-                                                trvc.textView.string = o.xmlString(options: [.nodePrettyPrint, .nodeCompactEmptyElement, .nodePreserveWhitespace] )
+                                            if let xmlAfterXSLT = try xml.object(byApplyingXSLTString: xsltCompact, arguments: ["author": "Freek"]) as? XMLDocument {
+                                                trvc.textView.string = xmlAfterXSLT.xmlString(options: [.nodePrettyPrint, .nodeCompactEmptyElement, .nodePreserveWhitespace] )
                                                 //webView.loadHTMLString(st, baseURL: nil)
-                                                self.brvc.webView.loadHTMLString(o.xmlString(options: [.documentTidyHTML, .nodePreserveWhitespace, .nodeCompactEmptyElement]), baseURL: nil)
+                                                //TODO: insert the CSS for dark mode:
+                                                /*
+                                                 <style>
+                                                 :root {
+                                                    color-scheme: light dark;
+                                                 }
+                                                 </style>
+                                                 */
+                                                self.brvc.webView.loadHTMLString(xmlAfterXSLT.xmlString(options: [.documentTidyHTML, .nodePreserveWhitespace, .nodeCompactEmptyElement]), baseURL: nil)
                                             }
                                         }
                                         catch {

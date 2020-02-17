@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15505"/>
-        <plugIn identifier="com.apple.WebKit2IBPlugin" version="15505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15705"/>
+        <plugIn identifier="com.apple.WebKit2IBPlugin" version="15705"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -798,9 +798,9 @@
                                 </customSpacing>
                             </stackView>
                             <scrollView horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bmb-6n-sqN">
-                                <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                                <rect key="frame" x="0.0" y="0.0" width="450" height="284"/>
                                 <clipView key="contentView" id="MqZ-Ct-sdq">
-                                    <rect key="frame" x="1" y="1" width="448" height="298"/>
+                                    <rect key="frame" x="1" y="1" width="448" height="282"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <textField verticalHuggingPriority="248" verticalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="P1h-gh-E1J">
@@ -825,18 +825,18 @@
                                     </constraints>
                                 </clipView>
                                 <scroller key="horizontalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="Qlt-QG-RAw">
-                                    <rect key="frame" x="1" y="283" width="448" height="16"/>
+                                    <rect key="frame" x="1" y="267" width="448" height="16"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                                 <scroller key="verticalScroller" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="56h-ln-BRK">
-                                    <rect key="frame" x="433" y="1" width="16" height="298"/>
+                                    <rect key="frame" x="433" y="1" width="16" height="282"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                             </scrollView>
                         </subviews>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="tBA-Y1-8d9" secondAttribute="trailing" id="1Qn-Gt-bf7"/>
-                            <constraint firstItem="bmb-6n-sqN" firstAttribute="top" secondItem="hIb-rj-Xid" secondAttribute="top" id="7nc-Ch-tfM"/>
+                            <constraint firstItem="bmb-6n-sqN" firstAttribute="top" secondItem="tBA-Y1-8d9" secondAttribute="bottom" id="7nc-Ch-tfM"/>
                             <constraint firstItem="tBA-Y1-8d9" firstAttribute="leading" secondItem="hIb-rj-Xid" secondAttribute="leading" id="JSK-SN-Gxt"/>
                             <constraint firstAttribute="trailing" secondItem="bmb-6n-sqN" secondAttribute="trailing" id="aDj-E9-5uW"/>
                             <constraint firstItem="tBA-Y1-8d9" firstAttribute="top" secondItem="hIb-rj-Xid" secondAttribute="top" id="awM-Wa-aft"/>
@@ -988,21 +988,29 @@
                             </stackView>
                             <scrollView appearanceType="aqua" verticalCompressionResistancePriority="250" borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NG1-In-3aT">
                                 <rect key="frame" x="0.0" y="0.0" width="450" height="401"/>
-                                <clipView key="contentView" copiesOnScroll="NO" id="FEH-LU-YcO">
+                                <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="FEH-LU-YcO">
                                     <rect key="frame" x="0.0" y="0.0" width="450" height="401"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <textView editable="NO" verticallyResizable="YES" usesFontPanel="YES" findStyle="bar" textCompletion="NO" smartInsertDelete="YES" id="KCF-WV-334">
+                                        <textView editable="NO" drawsBackground="NO" verticallyResizable="YES" usesFontPanel="YES" findStyle="bar" textCompletion="NO" smartInsertDelete="YES" id="KCF-WV-334">
                                             <rect key="frame" x="0.0" y="0.0" width="450" height="401"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             <size key="minSize" width="450" height="401"/>
                                             <size key="maxSize" width="459" height="10000000"/>
+                                            <attributedString key="textStorage">
+                                                <fragment content="TextView">
+                                                    <attributes>
+                                                        <color key="NSColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                        <font key="NSFont" metaFont="user"/>
+                                                        <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                    </attributes>
+                                                </fragment>
+                                            </attributedString>
                                             <color key="insertionPointColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                         </textView>
                                     </subviews>
-                                    <color key="backgroundColor" name="alternateSelectedControlTextColor" catalog="System" colorSpace="catalog"/>
                                 </clipView>
                                 <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="qxr-Oh-JLa">
                                     <rect key="frame" x="-100" y="-100" width="450" height="16"/>
