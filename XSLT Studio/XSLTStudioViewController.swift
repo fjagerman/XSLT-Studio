@@ -120,6 +120,7 @@
                                     if let xml = xmlXml {
                                         do {
                                             if let xmlAfterXSLT = try xml.object(byApplyingXSLTString: xsltCompact, arguments: ["author": "Freek"]) as? XMLDocument {
+                                                // Causing xsl:version: only 1.0 features are supported
                                                 trvc.textView.string = xmlAfterXSLT.xmlString(options: [.nodePrettyPrint, .nodeCompactEmptyElement, .nodePreserveWhitespace] )
                                                 //webView.loadHTMLString(st, baseURL: nil)
                                                 //TODO: insert the CSS for dark mode:

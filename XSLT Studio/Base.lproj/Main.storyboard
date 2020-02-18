@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="16085" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15705"/>
-        <plugIn identifier="com.apple.WebKit2IBPlugin" version="15705"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="16085"/>
+        <plugIn identifier="com.apple.WebKit2IBPlugin" version="16085"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -744,9 +744,7 @@
                         </connections>
                     </splitView>
                     <connections>
-                        <outlet property="bottom" destination="G3M-WJ-fQb" id="bE6-Sy-ffF"/>
                         <outlet property="splitView" destination="CDV-gA-oqh" id="cM3-Wx-Z1r"/>
-                        <outlet property="top" destination="buc-eA-idW" id="De0-BE-25q"/>
                         <segue destination="PTB-oZ-PWu" kind="relationship" relationship="splitItems" id="dPV-vD-ivs"/>
                         <segue destination="YjN-w4-CaH" kind="relationship" relationship="splitItems" id="1VJ-yd-fnB"/>
                     </connections>

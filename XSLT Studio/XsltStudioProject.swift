@@ -18,8 +18,14 @@ struct XsltStudioProject: Codable {
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
     <xsl:template match="/">
         <html>
-            <style>:root { color-scheme: light dark; }</style>
+<style>:root { color-scheme: light dark; }table { border-collapse: collapse; } a { color: var(--link);text-decoration: none;} table, td, th { border: 1px solid; }th {background-color: var(--th-color);text-align: left;} th, tr { font-family: Arial }tr:nth-child(even) {background-color: var(--alt-row-color);} @media (prefers-color-scheme: dark) {:root {--link: #6ECDFA; --th-color: #B50000; --alt-row-color: #626262;}} @media (prefers-color-scheme: light) {:root {--link: blue; --th-color: #93DC70; --alt-row-color: #f2f2f2;}}
+</style>
             <h1>Hello</h1>
+            <table>
+                <tr><th>Header</th></tr>
+                <tr><td>row1</td></tr>
+                <tr><td>row2</td></tr>
+            </table>
         </html>
     </xsl:template>
 </xsl:stylesheet>
