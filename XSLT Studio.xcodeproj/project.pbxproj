@@ -13,13 +13,10 @@
 		95923E5B21D56425005FCD24 /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95923E5A21D56425005FCD24 /* Document.swift */; };
 		95923E5D21D56426005FCD24 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 95923E5C21D56426005FCD24 /* Assets.xcassets */; };
 		95923E6021D56426005FCD24 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 95923E5E21D56426005FCD24 /* Main.storyboard */; };
-		95D8A9D321DCC4040004285C /* w3schools.xml in Resources */ = {isa = PBXBuildFile; fileRef = 95D8A9CF21DCC4040004285C /* w3schools.xml */; };
-		95D8A9D421DCC4040004285C /* arnhem_oldebroek.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 95D8A9D021DCC4040004285C /* arnhem_oldebroek.gpx */; };
 		95D8A9D521DCC4040004285C /* XMLSchema.xsd.xml in Resources */ = {isa = PBXBuildFile; fileRef = 95D8A9D121DCC4040004285C /* XMLSchema.xsd.xml */; };
 		95D8A9D621DCC4040004285C /* gpx_xsd.xml in Resources */ = {isa = PBXBuildFile; fileRef = 95D8A9D221DCC4040004285C /* gpx_xsd.xml */; };
 		95D8A9E421DCDC0E0004285C /* TopLeftViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D8A9E321DCDC0E0004285C /* TopLeftViewController.swift */; };
 		95D8A9E621DCDCA60004285C /* BottomLeftViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D8A9E521DCDCA60004285C /* BottomLeftViewController.swift */; };
-		95D8A9E821DCF7C30004285C /* w3schools.xslt in Resources */ = {isa = PBXBuildFile; fileRef = 95D8A9E721DCF7C30004285C /* w3schools.xslt */; };
 		95D8A9EB21DD01F90004285C /* TopRightViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D8A9E921DD01F90004285C /* TopRightViewController.swift */; };
 		95D8A9EE21DD02220004285C /* BottomRightViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D8A9ED21DD02220004285C /* BottomRightViewController.swift */; };
 /* End PBXBuildFile section */
@@ -35,13 +32,10 @@
 		95923E6121D56426005FCD24 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		95923E6221D56426005FCD24 /* XSLT_Studio.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = XSLT_Studio.entitlements; sourceTree = "<group>"; };
 		95B505A2222DB90000D530A1 /* test.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = test.gpx; path = ../../../../Desktop/test.gpx; sourceTree = "<group>"; };
-		95D8A9CF21DCC4040004285C /* w3schools.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = w3schools.xml; sourceTree = "<group>"; };
-		95D8A9D021DCC4040004285C /* arnhem_oldebroek.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = arnhem_oldebroek.gpx; sourceTree = "<group>"; };
 		95D8A9D121DCC4040004285C /* XMLSchema.xsd.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = XMLSchema.xsd.xml; sourceTree = "<group>"; };
 		95D8A9D221DCC4040004285C /* gpx_xsd.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = gpx_xsd.xml; sourceTree = "<group>"; };
 		95D8A9E321DCDC0E0004285C /* TopLeftViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopLeftViewController.swift; sourceTree = "<group>"; };
 		95D8A9E521DCDCA60004285C /* BottomLeftViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomLeftViewController.swift; sourceTree = "<group>"; };
-		95D8A9E721DCF7C30004285C /* w3schools.xslt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = w3schools.xslt; sourceTree = "<group>"; };
 		95D8A9E921DD01F90004285C /* TopRightViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopRightViewController.swift; sourceTree = "<group>"; };
 		95D8A9ED21DD02220004285C /* BottomRightViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomRightViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -105,10 +99,7 @@
 		95D8A9D821DCC56A0004285C /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				95D8A9D021DCC4040004285C /* arnhem_oldebroek.gpx */,
 				95D8A9D221DCC4040004285C /* gpx_xsd.xml */,
-				95D8A9CF21DCC4040004285C /* w3schools.xml */,
-				95D8A9E721DCF7C30004285C /* w3schools.xslt */,
 				95D8A9D121DCC4040004285C /* XMLSchema.xsd.xml */,
 			);
 			path = Resources;
@@ -173,11 +164,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				95D8A9D321DCC4040004285C /* w3schools.xml in Resources */,
 				95D8A9D621DCC4040004285C /* gpx_xsd.xml in Resources */,
-				95D8A9E821DCF7C30004285C /* w3schools.xslt in Resources */,
 				95923E5D21D56426005FCD24 /* Assets.xcassets in Resources */,
-				95D8A9D421DCC4040004285C /* arnhem_oldebroek.gpx in Resources */,
 				95923E6021D56426005FCD24 /* Main.storyboard in Resources */,
 				95D8A9D521DCC4040004285C /* XMLSchema.xsd.xml in Resources */,
 			);

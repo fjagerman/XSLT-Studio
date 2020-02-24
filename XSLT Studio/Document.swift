@@ -11,7 +11,7 @@ import Cocoa
 class Document: NSDocument {
     
     var content: XsltStudioProject?
-    var contentViewController: XSLTStudioViewController? // Will we use this?
+    var contentViewController: XSLTStudioViewController?
     
     override init() {
         super.init()
