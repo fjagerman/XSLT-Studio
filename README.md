@@ -7,7 +7,7 @@ Consists of 4 sections:
 - HTML source
 - HTML output
 
-Document based app, built in swift, supporting XSLT 1.0 only
+Document based app, built in swift, supporting XSLT 1.0 only.
 Supports dark mode.
 
 Still a draft version
