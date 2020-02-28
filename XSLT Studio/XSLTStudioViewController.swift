@@ -46,12 +46,6 @@
                 var bottomLeftObserver: NSObjectProtocol? // a cookie to later “stop listening” with
                 
                 override func viewWillAppear() {
-                    // Input files:
-                    //let url = URL(fileReferenceLiteralResourceName: "w3schools.xml")
-                    //let xslt = URL(fileReferenceLiteralResourceName: "w3schools.xslt")
-                    //print("loaded XML:")
-                    ///print(document?.content?.xml ?? "xml = nil" )
-                    
                     // Hook-up the four viewconrollers
                     
                     if let lvc = splitViewItems[0].viewController as? NSSplitViewController {
@@ -115,6 +109,8 @@
                                 let xsltXml = try XMLDocument(xmlString: xsltString, options: [.documentTidyXML, .nodePreserveWhitespace] )
                                 // Overwrite bottom right with PrettyPrindet version (may cause cleanup of the xslt)
                                 blvc.xsltInput.stringValue = xsltXml.xmlString(options: [.nodePrettyPrint, .nodeCompactEmptyElement] )
+                                // Attempt to get rid of the selected text
+                                blvc.xsltInput.resignFirstResponder()
                                 let xsltCompact = xsltXml.xmlString(options: .nodePreserveWhitespace )
                                 if trvc != nil && brvc != nil && document?.content?.xslt != nil {
                                     if let xml = xmlXml {

@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		9541CDB321F5D52D00A9DC41 /* XsltStudioProject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9541CDB221F5D52D00A9DC41 /* XsltStudioProject.swift */; };
+		955FA25E24070F8400811B5C /* XSL Transformations (XSLT).html in Resources */ = {isa = PBXBuildFile; fileRef = 955FA25D24070F8400811B5C /* XSL Transformations (XSLT).html */; };
+		955FA260240714A600811B5C /* RefGuideWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 955FA25F240714A600811B5C /* RefGuideWindowController.swift */; };
+		955FA2622407154B00811B5C /* RefGuideWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 955FA2612407154B00811B5C /* RefGuideWindow.xib */; };
 		95923E5721D56425005FCD24 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95923E5621D56425005FCD24 /* AppDelegate.swift */; };
 		95923E5921D56425005FCD24 /* XSLTStudioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95923E5821D56425005FCD24 /* XSLTStudioViewController.swift */; };
 		95923E5B21D56425005FCD24 /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95923E5A21D56425005FCD24 /* Document.swift */; };
@@ -23,6 +26,10 @@
 
 /* Begin PBXFileReference section */
 		9541CDB221F5D52D00A9DC41 /* XsltStudioProject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XsltStudioProject.swift; sourceTree = "<group>"; };
+		955FA25C2406AA0900811B5C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
+		955FA25D24070F8400811B5C /* XSL Transformations (XSLT).html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "XSL Transformations (XSLT).html"; sourceTree = "<group>"; };
+		955FA25F240714A600811B5C /* RefGuideWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefGuideWindowController.swift; sourceTree = "<group>"; };
+		955FA2612407154B00811B5C /* RefGuideWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RefGuideWindow.xib; sourceTree = "<group>"; };
 		95923E5321D56425005FCD24 /* XSLT Studio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "XSLT Studio.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		95923E5621D56425005FCD24 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		95923E5821D56425005FCD24 /* XSLTStudioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XSLTStudioViewController.swift; sourceTree = "<group>"; };
@@ -31,6 +38,7 @@
 		95923E5F21D56426005FCD24 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		95923E6121D56426005FCD24 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		95923E6221D56426005FCD24 /* XSLT_Studio.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = XSLT_Studio.entitlements; sourceTree = "<group>"; };
+		95A485922403DCBD00AAA21B /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/Main.strings; sourceTree = "<group>"; };
 		95B505A2222DB90000D530A1 /* test.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = test.gpx; path = ../../../../Desktop/test.gpx; sourceTree = "<group>"; };
 		95D8A9D121DCC4040004285C /* XMLSchema.xsd.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = XMLSchema.xsd.xml; sourceTree = "<group>"; };
 		95D8A9D221DCC4040004285C /* gpx_xsd.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = gpx_xsd.xml; sourceTree = "<group>"; };
@@ -76,6 +84,8 @@
 				95D8A9E921DD01F90004285C /* TopRightViewController.swift */,
 				95D8A9E521DCDCA60004285C /* BottomLeftViewController.swift */,
 				95D8A9ED21DD02220004285C /* BottomRightViewController.swift */,
+				955FA25F240714A600811B5C /* RefGuideWindowController.swift */,
+				955FA2612407154B00811B5C /* RefGuideWindow.xib */,
 				95923E5621D56425005FCD24 /* AppDelegate.swift */,
 				95923E5821D56425005FCD24 /* XSLTStudioViewController.swift */,
 				95B505A2222DB90000D530A1 /* test.gpx */,
@@ -99,6 +109,7 @@
 		95D8A9D821DCC56A0004285C /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				955FA25D24070F8400811B5C /* XSL Transformations (XSLT).html */,
 				95D8A9D221DCC4040004285C /* gpx_xsd.xml */,
 				95D8A9D121DCC4040004285C /* XMLSchema.xsd.xml */,
 			);
@@ -148,6 +159,7 @@
 			knownRegions = (
 				en,
 				Base,
+				nl,
 			);
 			mainGroup = 95923E4A21D56425005FCD24;
 			productRefGroup = 95923E5421D56425005FCD24 /* Products */;
@@ -166,8 +178,10 @@
 			files = (
 				95D8A9D621DCC4040004285C /* gpx_xsd.xml in Resources */,
 				95923E5D21D56426005FCD24 /* Assets.xcassets in Resources */,
+				955FA2622407154B00811B5C /* RefGuideWindow.xib in Resources */,
 				95923E6021D56426005FCD24 /* Main.storyboard in Resources */,
 				95D8A9D521DCC4040004285C /* XMLSchema.xsd.xml in Resources */,
+				955FA25E24070F8400811B5C /* XSL Transformations (XSLT).html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -185,6 +199,7 @@
 				9541CDB321F5D52D00A9DC41 /* XsltStudioProject.swift in Sources */,
 				95D8A9E421DCDC0E0004285C /* TopLeftViewController.swift in Sources */,
 				95D8A9E621DCDCA60004285C /* BottomLeftViewController.swift in Sources */,
+				955FA260240714A600811B5C /* RefGuideWindowController.swift in Sources */,
 				95923E5B21D56425005FCD24 /* Document.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -196,6 +211,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				95923E5F21D56426005FCD24 /* Base */,
+				95A485922403DCBD00AAA21B /* nl */,
+				955FA25C2406AA0900811B5C /* en */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -207,6 +224,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -268,6 +286,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
