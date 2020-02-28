@@ -11,7 +11,7 @@ import Cocoa
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
 
-
+    private var refguideWindowController = RefGuideWindowController(windowNibName: "RefGuideWindow")
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         // Insert code here to initialize your application
@@ -22,6 +22,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         // Insert code here to tear down your application
     }
 
-
+    @IBAction func launchRefGuide(_ sender: NSMenuItem) {
+        refguideWindowController.showWindow(sender)
+    }
+    
 }
 
