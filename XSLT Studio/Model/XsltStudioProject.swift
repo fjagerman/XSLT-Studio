@@ -10,9 +10,16 @@ import Foundation
 
 // Both XSLT and XML are stored in string to allow saving invalid XML
 struct XsltStudioProject: Codable {
+    // Position of the sliders
+    var left:   CGFloat = 0.5
+    var middle: CGFloat = 0.5
+    var right:  CGFloat = 0.5
+    
+    // XML to be loaded in the top left window
     var xml: String = """
 <?xml version="1.0" encoding="UTF-8"?>
 """
+    // XSLT to be loaded in the botom left window
     var xslt: String = """
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">

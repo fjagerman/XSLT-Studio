@@ -24,8 +24,6 @@
                 var tlvc: TopLeftViewController!
                 // No need to unregister any old observer: by using the observer-propery we take care of this atomatically
                 
-                
-                
                 var blvc: BottomLeftViewController!
                 var trvc: TopRightViewController!
                 var brvc: BottomRightViewController!
@@ -46,7 +44,7 @@
                 var bottomLeftObserver: NSObjectProtocol? // a cookie to later “stop listening” with
                 
                 override func viewWillAppear() {
-                    // Hook-up the four viewconrollers
+                    // Hook-up the four viewcontrollers
                     
                     if let lvc = splitViewItems[0].viewController as? NSSplitViewController {
                         tlvc = lvc.splitViewItems[0].viewController as? TopLeftViewController
@@ -84,12 +82,20 @@
                                 }
                             }
                         }
-                    }
-                    
-                    if let rightViewController = splitViewItems[1].viewController as? NSSplitViewController {
-                        trvc = rightViewController.splitViewItems[0].viewController as? TopRightViewController
-                        brvc = rightViewController.splitViewItems[1].viewController as? BottomRightViewController
-                        refresh()
+                        
+                        if let rvc = splitViewItems[1].viewController as? NSSplitViewController {
+                            trvc = rvc.splitViewItems[0].viewController as? TopRightViewController
+                            brvc = rvc.splitViewItems[1].viewController as? BottomRightViewController
+                            if let content = self.document?.content {
+                                // Set middle divider
+                                self.splitView.setPosition(content.middle * self.view.frame.width, ofDividerAt: 0)
+                                // Set left divider
+                                lvc.splitView.setPosition(content.left * self.view.frame.height, ofDividerAt: 0)
+                                // Set right divider
+                                rvc.splitView.setPosition(content.right * self.view.frame.height, ofDividerAt: 0)
+                                refresh()
+                            }
+                        }
                     }
                 }
                 
@@ -123,7 +129,7 @@
                                                 /*
                                                  <style>
                                                  :root {
-                                                    color-scheme: light dark;
+                                                 color-scheme: light dark;
                                                  }
                                                  </style>
                                                  */
@@ -171,5 +177,14 @@
                     }
                 }
                 
+                // MARK: - SplitviewDelegate
+                override func splitViewDidResizeSubviews(_ notification: Notification) {
+                    // Update the slider-positions in content
+                    if self.tlvc != nil {
+                        self.document?.content?.middle = tlvc.view.frame.width / view.frame.width
+                        self.document?.content?.left = tlvc.view.frame.height / view.frame.height
+                        self.document?.content?.right = trvc.view.frame.height / view.frame.height
+                    }
+                }
             }
             
