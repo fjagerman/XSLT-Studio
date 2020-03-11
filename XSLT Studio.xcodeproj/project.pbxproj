@@ -79,7 +79,7 @@
 		95923E5521D56425005FCD24 /* XSLT Studio */ = {
 			isa = PBXGroup;
 			children = (
-				9541CDB221F5D52D00A9DC41 /* XsltStudioProject.swift */,
+				95BC78402418EB4D0056B566 /* Model */,
 				95D8A9E321DCDC0E0004285C /* TopLeftViewController.swift */,
 				95D8A9E921DD01F90004285C /* TopRightViewController.swift */,
 				95D8A9E521DCDCA60004285C /* BottomLeftViewController.swift */,
@@ -97,6 +97,14 @@
 				95D8A9D821DCC56A0004285C /* Resources */,
 			);
 			path = "XSLT Studio";
+			sourceTree = "<group>";
+		};
+		95BC78402418EB4D0056B566 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				9541CDB221F5D52D00A9DC41 /* XsltStudioProject.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		95D8A9D721DCC5520004285C /* Resources */ = {
@@ -272,7 +280,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -328,7 +336,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = macosx;
