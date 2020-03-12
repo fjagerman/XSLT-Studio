@@ -184,6 +184,7 @@
                         self.document?.content?.middle = tlvc.view.frame.width / view.frame.width
                         self.document?.content?.left = tlvc.view.frame.height / view.frame.height
                         self.document?.content?.right = trvc.view.frame.height / view.frame.height
+                        self.document?.updateChangeCount(.changeDone)
                     }
                 }
             }
