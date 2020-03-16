@@ -9,7 +9,14 @@
 import Cocoa
 
 class TopRightViewController: NSViewController {
-    @IBOutlet var textView: NSTextView!
+    
+    var html = true
+    @IBOutlet weak var textView: NSTextView!
+    @IBAction func htmlClicked(_ sender: NSButton) {
+        html = !html
+        NotificationCenter.default.post(name: Notification.Name("XsltStudioDocumentChanged"), object: self)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do view setup here.
