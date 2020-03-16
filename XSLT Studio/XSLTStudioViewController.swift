@@ -114,7 +114,7 @@
                 func refresh() {
                     if tlvc != nil && blvc != nil &&  trvc != nil && brvc != nil {
                         if let doc = document?.content {
-                            //tlvc.xmlInput.stringValue = doc.xml
+                            tlvc.xmlInput.stringValue = doc.xml
                             blvc.xsltInput.stringValue = doc.xslt
                             trvc.textView.string = doc.output
                             brvc.webView.loadHTMLString(doc.html ? doc.output : "", baseURL: nil)
