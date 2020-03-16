@@ -955,6 +955,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="whiteSpaceCheckbox" destination="NGD-uD-OYE" id="NLk-21-tIg"/>
                         <outlet property="xsltInput" destination="KZd-7F-km9" id="Omz-67-V8i"/>
                     </connections>
                 </viewController>
@@ -1067,6 +1068,8 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="html" destination="eCF-eV-dh5" id="Oee-Lp-Dcm"/>
+                        <outlet property="htmlCheckbox" destination="eCF-eV-dh5" id="7Cb-YX-hOf"/>
                         <outlet property="textView" destination="Te8-UF-1on" id="Xkt-wL-RQL"/>
                     </connections>
                 </viewController>

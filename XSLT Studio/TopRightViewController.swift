@@ -10,10 +10,10 @@ import Cocoa
 
 class TopRightViewController: NSViewController {
     
-    var html = true
     @IBOutlet weak var textView: NSTextView!
-    @IBAction func htmlClicked(_ sender: NSButton) {
-        html = !html
+    @IBOutlet weak var htmlCheckbox: NSButton!
+    
+    @IBAction func htmlClicked(_ sender: NSButton?) {
         NotificationCenter.default.post(name: Notification.Name("XsltStudioDocumentChanged"), object: self)
     }
     

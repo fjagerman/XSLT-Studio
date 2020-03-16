@@ -10,11 +10,10 @@ import Cocoa
 
 class BottomLeftViewController: NSViewController {
 
-    var whiteSpace = true
     @IBOutlet weak var xsltInput: NSTextField!
+    @IBOutlet weak var whiteSpaceCheckbox: NSButton!
     
     @IBAction func whiteSpaceClicked(_ sender: NSButton) {
-        whiteSpace = !whiteSpace
         NotificationCenter.default.post(name: Notification.Name("XsltStudioDocumentChanged"), object: self)
     }
     override func viewDidLoad() {

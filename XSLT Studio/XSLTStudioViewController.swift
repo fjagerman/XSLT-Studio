@@ -17,7 +17,7 @@
                 
                 var xmlXml: XMLDocument?
                 
-                var document: Document? {
+                var document: Document! {
                     return representedObject as? Document
                 }
                 
@@ -54,17 +54,19 @@
                             queue: OperationQueue.main // the queue on which to dispatch the closure below
                         ) { (notification: Notification) -> Void in // closure executed when broadcasts occur
                             if let newXml = self.tlvc.xmlInput?.stringValue {
-                                if self.document?.content?.xml != newXml {
+                                if self.document.content?.xml != newXml {
                                     // actual user input: update and notify the document
-                                    self.document?.content?.xml = newXml
-                                    self.tlvc.xmlInput.stringValue = self.document?.content?.xml ?? ""
+                                    self.document.content?.xml = newXml
+                                    self.tlvc.xmlInput.stringValue = self.document.content?.xml ?? ""
                                     self.refresh()
-                                    self.document?.updateChangeCount(.changeDone)
+                                    self.document.updateChangeCount(.changeDone)
                                 }
                             }
                         }
                         
                         blvc = lvc.splitViewItems[1].viewController as? BottomLeftViewController
+                        // Set the whiteSpace checkbox according to the document
+                        blvc.whiteSpaceCheckbox.state = NSControl.StateValue(rawValue: self.document.content!.preserveWhitespace ? 1 : 0)
                         
                         //Assign observer for XSLT-changes
                         bottomLeftObserver = NotificationCenter.default.addObserver(
@@ -73,12 +75,12 @@
                             queue: OperationQueue.main // the queue on which to dispatch the closure below
                         ) { (notification: Notification) -> Void in // closure executed when broadcasts occur
                             if let newXslt = self.blvc.xsltInput?.stringValue {
-                                if self.document?.content?.xslt != newXslt ||
-                                    self.document?.content?.preserveWhitespace != self.blvc.whiteSpace
+                                if self.document.content?.xslt != newXslt ||
+                                    self.document.content?.preserveWhitespace != (self.blvc.whiteSpaceCheckbox.state.rawValue == 1)
                                 {
-                                    self.document!.content!.preserveWhitespace = self.blvc.whiteSpace
+                                    self.document.content!.preserveWhitespace = (self.blvc.whiteSpaceCheckbox.state.rawValue == 1)
                                     // actual user input: update and notify the document
-                                    self.document!.content!.xslt = newXslt
+                                    self.document.content!.xslt = newXslt
                                     self.refresh()
                                 }
                             }
@@ -86,14 +88,20 @@
                         
                         if let rvc = splitViewItems[1].viewController as? NSSplitViewController {
                             trvc = rvc.splitViewItems[0].viewController as? TopRightViewController
+                            // align the HTML checkbox with the document
+                            trvc.htmlCheckbox.state = NSControl.StateValue(rawValue: self.document.content!.html ? 1 : 0)
+                            
                             brvc = rvc.splitViewItems[1].viewController as? BottomRightViewController
-                            if let content = self.document?.content {
+                            // Restore the splitview sliders
+                            if let content = self.document.content {
                                 // Set middle divider
                                 self.splitView.setPosition(content.middle * self.view.frame.width, ofDividerAt: 0)
                                 // Set left divider
                                 lvc.splitView.setPosition(content.left * self.view.frame.height, ofDividerAt: 0)
                                 // Set right divider
                                 rvc.splitView.setPosition(content.right * self.view.frame.height, ofDividerAt: 0)
+                                
+                                
                                 refresh()
                                 
                                 topRightObserver = NotificationCenter.default.addObserver(
@@ -101,8 +109,8 @@
                                     object: trvc, // the broadcaster is the topRightViewController meaning the HTML checkbox has changed
                                     queue: OperationQueue.main // the queue on which to dispatch the closure below
                                 ) { (notification: Notification) -> Void in // closure executed when broadcasts occur
-                                    self.document?.content?.html = self.trvc.html
-                                    rvc.splitView.setPosition(self.document!.content!.right * self.view.frame.height, ofDividerAt: 0)
+                                    self.document.content!.html = (self.trvc.htmlCheckbox.state.rawValue == 1)
+                                    rvc.splitView.setPosition(self.document.content!.right * self.view.frame.height, ofDividerAt: 0)
                                     self.refresh()
                                 }
                             }
@@ -113,12 +121,14 @@
                 
                 func refresh() {
                     if tlvc != nil && blvc != nil &&  trvc != nil && brvc != nil {
-                        if let doc = document?.content {
+                        if let doc = document.content {
                             tlvc.xmlInput.stringValue = doc.xml
                             blvc.xsltInput.stringValue = doc.xslt
                             trvc.textView.string = doc.output
-                            brvc.webView.loadHTMLString(doc.html ? doc.output : "", baseURL: nil)
-                            document!.updateChangeCount(.changeDone)
+                            if doc.html {
+                                brvc.webView.loadHTMLString(doc.html ? doc.output : "", baseURL: nil)
+                            }
+                            document.updateChangeCount(.changeDone)
                         }
                     }
                 }
@@ -129,20 +139,17 @@
                         // Update the view, if already loaded.
                         // Pass down the represented object to all of the child view controllers.
                         // saple code provided tis loop, but we keep all logic in this viewcontoller:
+                        if (representedObject as? Document) != nil {
+                            print("It's a XsltStudioObject!")
+                        }
                         /*
                          for child in children {
                          child.representedObject = representedObject
                          } */
-                        // No need to unregister any old observer: by using the observer-propery we take care of this atomatically
-                        docObserver = NotificationCenter.default.addObserver(
-                            forName: Notification.Name.XsltStudioDocumentChanged, // the name of the radio station
-                            object: representedObject, // the broadcaster is the document. This means: a file was read
-                            queue: OperationQueue.main // the queue on which to dispatch the closure below
-                        ) { (notification: Notification) -> Void in // closure executed when broadcasts occur
-                            //let info: Any? = notification.userInfo
-                            // info is usually a dictionary of notification-specific information
-                            self.refresh()
-                        }
+                        
+                        
+                        self.refresh()
+                        
                     }
                 }
                 
@@ -150,10 +157,12 @@
                 override func splitViewDidResizeSubviews(_ notification: Notification) {
                     // Update the slider-positions in content
                     if self.tlvc != nil {
-                        self.document?.content?.middle = tlvc.view.frame.width / view.frame.width
-                        self.document?.content?.left = tlvc.view.frame.height / view.frame.height
-                        self.document?.content?.right = trvc.view.frame.height / view.frame.height
-                        self.document?.updateChangeCount(.changeDone)
+                        self.document.content?.middle = tlvc.view.frame.width / view.frame.width
+                        self.document.content?.left = tlvc.view.frame.height / view.frame.height
+                        if trvc.htmlCheckbox.state.rawValue == 1 {
+                            self.document.content?.right = trvc.view.frame.height / view.frame.height
+                        }
+                        self.document.updateChangeCount(.changeDone)
                     }
                 }
             }
