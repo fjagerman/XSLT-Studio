@@ -10,7 +10,13 @@ import Cocoa
 
 class BottomLeftViewController: NSViewController {
 
+    var whiteSpace = true
     @IBOutlet weak var xsltInput: NSTextField!
+    
+    @IBAction func whiteSpaceClicked(_ sender: NSButton) {
+        whiteSpace = !whiteSpace
+        NotificationCenter.default.post(name: Notification.Name("XsltStudioDocumentChanged"), object: self)
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do view setup here.

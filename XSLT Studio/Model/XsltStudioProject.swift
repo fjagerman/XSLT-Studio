@@ -8,17 +8,86 @@
 
 import Foundation
 
-// Both XSLT and XML are stored in string to allow saving invalid XML
 struct XsltStudioProject: Codable {
+    
+    // MARK: - Non-Codable Attributes
+    var parseOptions: XMLNode.Options = [.documentTidyXML]
+    var outputOptions: XMLNode.Options = [.nodePrettyPrint, .nodeCompactEmptyElement]
+    var output = ""
+    private var parseError = true
+    
+    // MARK: - Codable Attributes
     // Position of the sliders
     var left:   CGFloat = 0.5
     var middle: CGFloat = 0.5
-    var right:  CGFloat = 0.5
+    var _right:  CGFloat = 0.5
     
-    // XML to be loaded in the top left window
+    var right: CGFloat {
+        set {
+            if !html {
+                _right = newValue
+            }
+        }
+        get {
+            html ? _right : 1.0
+        }
+    }
+    
+    // Toggle fo preserving whitespace when applying XSLT or reformatting XSLT
+    var preserveWhitespace = false {
+        didSet {
+            // Configure the options accordingly:
+            if preserveWhitespace {
+                parseOptions.insert(.nodePreserveWhitespace)
+                outputOptions.insert(.nodePreserveWhitespace)
+            }
+            else {
+                parseOptions.remove(.nodePreserveWhitespace)
+                outputOptions.remove(.nodePreserveWhitespace)
+            }
+        }
+    }
+    var html = true
+    
+    // Generate HTML
+    var generateHtml: Bool {
+        get {
+            if parseError {
+                return false
+            }
+            else {
+                return html
+            }
+        }
+        set {
+            html = newValue
+        }
+    }
+    // Both XSLT and XML are stored as String to allow for invalid XML
+    
+    private var xmldoc: XMLDocument?
     var xml: String = """
 <?xml version="1.0" encoding="UTF-8"?>
-"""
+""" {
+        didSet {
+            do {
+                xmldoc = try XMLDocument(xmlString: xml, options: .documentTidyXML)
+                // Overwrite xml with PrettyPrinted version
+                if let st = xmldoc?.xmlString(options: .nodePrettyPrint ) {
+                    if st != oldValue {
+                        xml = st
+                        refreshOutput()
+                    }
+                }
+            }
+            catch {
+                print("XML in top left windows is not valid: \(error)")
+            }
+        }
+    }
+    
+    
+    
     // XSLT to be loaded in the botom left window
     var xslt: String = """
 <?xml version="1.0" encoding="UTF-8"?>
@@ -36,18 +105,76 @@ struct XsltStudioProject: Codable {
         </html>
     </xsl:template>
 </xsl:stylesheet>
-"""
+""" {
+        didSet {
+            do {
+                let xsltdoc = try XMLDocument(xmlString: xslt, options: parseOptions )
+                // Overwrite xslt with PrettyPrinted version (may cause a cleanup of the xslt)
+                let st = xsltdoc.xmlString(options: outputOptions )
+                if st != oldValue {
+                    xslt = st
+                    refreshOutput()
+                }
+            }
+            catch {
+                print("XSLT in bottom left windows is not valid: \(error)")
+            }
+        }
+    }
     
-    init() {}
+    /// This is where all the magic happens:
+    /// Applying XSLT on XSL and saving it in the output attribute
+    mutating func refreshOutput() {
+        do {
+            if xmldoc == nil {
+                do {
+                    xmldoc = try XMLDocument(xmlString: xml, options: .documentTidyXML)
+                }
+                catch {
+                    print("XML in top left windows is not valid: \(error)")
+                }
+            }
+            if let xmlAfterXSLT = try xmldoc?.object(byApplyingXSLTString: xslt, arguments: ["author": "Freek"]) as? XMLDocument {
+                // Causing xsl:version: only 1.0 features are supported
+                output = xmlAfterXSLT.xmlString(options: outputOptions)
+                parseError = false
+            }
+            else {
+                parseError = true
+            }
+        }
+        catch {
+            print("Object by applying XSLT string failed: \(error)")
+            output = "XSLT is not valid: \(error)"
+            parseError = true
+        }
+    }
     
+    
+    
+    
+    init() {
+        self.refreshOutput()
+    }
+    
+    // MARK: - Codable stuff
+    
+    // This enum specifies which attributes to encode
+    private enum CodingKeys: String, CodingKey {
+        case left, middle, _right="right", preserveWhitespace, html, xml, xslt
+    }
+    
+    /// Initialize with JSON
     init?(json: Data) {
         if let newValue = try? JSONDecoder().decode(XsltStudioProject.self, from: json) {
             self = newValue
+            refreshOutput()
         } else {
             return nil
         }
     }
     
+    // To produce json
     var json: Data? {
         return try? JSONEncoder().encode(self)
     }

@@ -28,9 +28,11 @@
                 var trvc: TopRightViewController!
                 var brvc: BottomRightViewController!
                 
-                // MARK: - Outlets
-                //@IBOutlet weak var leftSplitview: NSSplitView!
-                //@IBOutlet weak var rightSplitview: NSSplitViewItem!
+                // MARK: - Notification Observer
+                var docObserver: NSObjectProtocol? // Cookies to later “stop listening” with
+                var topLeftObserver: NSObjectProtocol?
+                var bottomLeftObserver: NSObjectProtocol?
+                var topRightObserver:  NSObjectProtocol?
                 
                 // MARK: - LifeCycle
                 override func viewDidLoad() {
@@ -38,10 +40,6 @@
                     
                     // Do any additional setup after loading the view.
                 }
-                // MARK: - Notification Observer
-                var docObserver: NSObjectProtocol? // a cookie to later “stop listening” with
-                var topLeftObserver: NSObjectProtocol? // a cookie to later “stop listening” with
-                var bottomLeftObserver: NSObjectProtocol? // a cookie to later “stop listening” with
                 
                 override func viewWillAppear() {
                     // Hook-up the four viewcontrollers
@@ -52,13 +50,14 @@
                         // (No need to unregister any old observer: by using the observer-propery we take care of this atomatically)
                         topLeftObserver = NotificationCenter.default.addObserver(
                             forName: Notification.Name.XsltStudioDocumentChanged, // the name of the radio station
-                            object: tlvc, // the broadcaster is the topLeftViewController. This  means: the XML has changed
+                            object: tlvc, // the broadcaster is the topLeftViewController. This means the XML has changed
                             queue: OperationQueue.main // the queue on which to dispatch the closure below
                         ) { (notification: Notification) -> Void in // closure executed when broadcasts occur
-                            if let newval = self.tlvc.xmlInput?.stringValue {
-                                if self.document?.content?.xml != newval {
+                            if let newXml = self.tlvc.xmlInput?.stringValue {
+                                if self.document?.content?.xml != newXml {
                                     // actual user input: update and notify the document
-                                    self.document?.content?.xml = newval
+                                    self.document?.content?.xml = newXml
+                                    self.tlvc.xmlInput.stringValue = self.document?.content?.xml ?? ""
                                     self.refresh()
                                     self.document?.updateChangeCount(.changeDone)
                                 }
@@ -70,15 +69,17 @@
                         //Assign observer for XSLT-changes
                         bottomLeftObserver = NotificationCenter.default.addObserver(
                             forName: Notification.Name.XsltStudioDocumentChanged, // the name of the radio station
-                            object: blvc, // the broadcaster is the topLeftViewController. This  means: the XML has changed
+                            object: blvc, // the broadcaster is the bottomLeftViewController meaning: the XSLT has changed
                             queue: OperationQueue.main // the queue on which to dispatch the closure below
                         ) { (notification: Notification) -> Void in // closure executed when broadcasts occur
-                            if let newval = self.blvc.xsltInput?.stringValue {
-                                if self.document?.content?.xslt != newval {
+                            if let newXslt = self.blvc.xsltInput?.stringValue {
+                                if self.document?.content?.xslt != newXslt ||
+                                    self.document?.content?.preserveWhitespace != self.blvc.whiteSpace
+                                {
+                                    self.document!.content!.preserveWhitespace = self.blvc.whiteSpace
                                     // actual user input: update and notify the document
-                                    self.document?.content?.xslt = newval
+                                    self.document!.content!.xslt = newXslt
                                     self.refresh()
-                                    self.document?.updateChangeCount(.changeDone)
                                 }
                             }
                         }
@@ -94,62 +95,30 @@
                                 // Set right divider
                                 rvc.splitView.setPosition(content.right * self.view.frame.height, ofDividerAt: 0)
                                 refresh()
+                                
+                                topRightObserver = NotificationCenter.default.addObserver(
+                                    forName: Notification.Name.XsltStudioDocumentChanged, // the name of the radio station
+                                    object: trvc, // the broadcaster is the topRightViewController meaning the HTML checkbox has changed
+                                    queue: OperationQueue.main // the queue on which to dispatch the closure below
+                                ) { (notification: Notification) -> Void in // closure executed when broadcasts occur
+                                    self.document?.content?.html = self.trvc.html
+                                    rvc.splitView.setPosition(self.document!.content!.right * self.view.frame.height, ofDividerAt: 0)
+                                    self.refresh()
+                                }
                             }
                         }
                     }
                 }
                 
                 
-                // This is where all the magic happens:
                 func refresh() {
-                    if let xmlString = document?.content?.xml, let xsltString = document?.content?.xslt {
-                        tlvc.xmlInput.stringValue = xmlString
-                        blvc.xsltInput.stringValue = xsltString
-                        do {
-                            xmlXml = try XMLDocument(xmlString: xmlString, options: .documentTidyXML)
-                            if let st = xmlXml?.xmlString(options: .nodePrettyPrint ) {
-                                // Overwrite top left with PrettyPrinted version
-                                tlvc.xmlInput.stringValue = st
-                            }
-                            do {
-                                let xsltXml = try XMLDocument(xmlString: xsltString, options: [.documentTidyXML, .nodePreserveWhitespace] )
-                                // Overwrite bottom right with PrettyPrindet version (may cause cleanup of the xslt)
-                                blvc.xsltInput.stringValue = xsltXml.xmlString(options: [.nodePrettyPrint, .nodeCompactEmptyElement] )
-                                // Attempt to get rid of the selected text
-                                blvc.xsltInput.resignFirstResponder()
-                                let xsltCompact = xsltXml.xmlString(options: .nodePreserveWhitespace )
-                                if trvc != nil && brvc != nil && document?.content?.xslt != nil {
-                                    if let xml = xmlXml {
-                                        do {
-                                            if let xmlAfterXSLT = try xml.object(byApplyingXSLTString: xsltCompact, arguments: ["author": "Freek"]) as? XMLDocument {
-                                                // Causing xsl:version: only 1.0 features are supported
-                                                trvc.textView.string = xmlAfterXSLT.xmlString(options: [.nodePrettyPrint, .nodeCompactEmptyElement, .nodePreserveWhitespace] )
-                                                //webView.loadHTMLString(st, baseURL: nil)
-                                                //TODO: insert the CSS for dark mode:
-                                                /*
-                                                 <style>
-                                                 :root {
-                                                 color-scheme: light dark;
-                                                 }
-                                                 </style>
-                                                 */
-                                                self.brvc.webView.loadHTMLString(xmlAfterXSLT.xmlString(options: [.documentTidyHTML, .nodePreserveWhitespace, .nodeCompactEmptyElement]), baseURL: nil)
-                                            }
-                                        }
-                                        catch {
-                                            print("Object by applying XSLT string failed: \(error)")
-                                            self.trvc.textView.string = "XSLT is not valid: \(error)"
-                                            self.brvc.webView.loadHTMLString("", baseURL: nil)
-                                        }
-                                    }
-                                }
-                            }
-                            catch {
-                                print("XSLT is not a valid XML: \(error)")
-                            }
-                        }
-                        catch {
-                            print("XML is not valid: \(error)")
+                    if tlvc != nil && blvc != nil &&  trvc != nil && brvc != nil {
+                        if let doc = document?.content {
+                            //tlvc.xmlInput.stringValue = doc.xml
+                            blvc.xsltInput.stringValue = doc.xslt
+                            trvc.textView.string = doc.output
+                            brvc.webView.loadHTMLString(doc.html ? doc.output : "", baseURL: nil)
+                            document!.updateChangeCount(.changeDone)
                         }
                     }
                 }
