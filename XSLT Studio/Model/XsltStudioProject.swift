@@ -24,7 +24,7 @@ struct XsltStudioProject: Codable {
     
     var right: CGFloat {
         set {
-            if !html {
+            if html {
                 _right = newValue
             }
         }
@@ -141,6 +141,7 @@ struct XsltStudioProject: Codable {
             }
             else {
                 parseError = true
+                output = "Error"
             }
         }
         catch {
