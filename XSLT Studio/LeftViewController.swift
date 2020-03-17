@@ -12,7 +12,6 @@ class LeftViewController: NSSplitViewController {
     
     
     @IBOutlet weak var topSplitViewItem: NSSplitViewItem!
-    @IBOutlet weak var bottomSplitViewItem: NSSplitViewItem!
     
     var tlvc: TopLeftViewController! {
         if let t = topSplitViewItem {
@@ -22,15 +21,7 @@ class LeftViewController: NSSplitViewController {
             return nil
         }
     }
-    
-//    var blvc: BottomLeftViewController! {
-//        if let b = bottomSplitViewItem {
-//            return b.viewController as? BottomLeftViewController
-//        }
-//        else {
-//            return nil
-//        }
-//    }
+
     
     // MARK: - Notification Observer
     // No need to unregister any old observer: by using the observer-propery we take care of this atomatically

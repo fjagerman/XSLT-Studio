@@ -725,7 +725,6 @@
                     </splitView>
                     <connections>
                         <outlet property="leftSplitViewItem" destination="6QQ-qN-NOH" id="Dl9-nb-8MQ"/>
-                        <outlet property="rightSplitViewItem" destination="uR3-3W-LNA" id="yrX-0C-w63"/>
                         <outlet property="splitView" destination="hfB-JX-PWI" id="aHu-Ux-KPc"/>
                         <segue destination="WCg-Oj-opA" kind="relationship" relationship="splitItems" id="Vrn-Uf-JTd"/>
                         <segue destination="fw6-tV-rDQ" kind="relationship" relationship="splitItems" id="5fM-wU-44t"/>
@@ -751,7 +750,6 @@
                         </connections>
                     </splitView>
                     <connections>
-                        <outlet property="bottomSplitViewItem" destination="G3M-WJ-fQb" id="zdT-AL-Ip3"/>
                         <outlet property="splitView" destination="CDV-gA-oqh" id="cM3-Wx-Z1r"/>
                         <outlet property="topSplitViewItem" destination="buc-eA-idW" id="07i-yO-RnM"/>
                         <segue destination="PTB-oZ-PWu" kind="relationship" relationship="splitItems" id="dPV-vD-ivs"/>
@@ -983,7 +981,6 @@
                         </connections>
                     </splitView>
                     <connections>
-                        <outlet property="bottomSplitViewItem" destination="7W4-gj-Jwq" id="ZqC-gg-1px"/>
                         <outlet property="splitView" destination="H6E-eR-ndK" id="L0a-DY-KtA"/>
                         <outlet property="topSplitViewItem" destination="XDe-WM-T1q" id="2eb-Ir-e9q"/>
                         <segue destination="Y6c-YC-zOJ" kind="relationship" relationship="splitItems" id="n5O-dQ-ZCd"/>
