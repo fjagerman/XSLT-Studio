@@ -11,7 +11,6 @@ import Cocoa
 class RightViewController: NSSplitViewController {
     
     @IBOutlet weak var topSplitViewItem: NSSplitViewItem!
-    @IBOutlet weak var bottomSplitViewItem: NSSplitViewItem!
     
     var trvc: TopRightViewController! {
         if let t = topSplitViewItem {
@@ -21,18 +20,6 @@ class RightViewController: NSSplitViewController {
             return nil
         }
     }
-    
-    var brvc: BottomRightViewController! {
-        if let b = bottomSplitViewItem {
-            return b.viewController as? BottomRightViewController
-        }
-        else {
-            return nil
-        }
-    }
-    
-
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,18 +35,6 @@ class RightViewController: NSSplitViewController {
             splitView.setPosition(content.right * self.view.frame.height, ofDividerAt: 0)
         }
     }
-    
-//    func refresh() {
-//        if trvc != nil && brvc != nil {
-//            if let doc = document.content {
-//                //trvc.textView.string = doc.output
-//                if doc.html {
-//                    brvc.webView.loadHTMLString(doc.html ? doc.output : "", baseURL: nil)
-//                }
-//                document.updateChangeCount(.changeDone)
-//            }
-//        }
-//    }
     
     var document: Document! {
         return representedObject as? Document

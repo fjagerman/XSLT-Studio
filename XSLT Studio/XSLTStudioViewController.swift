@@ -7,7 +7,6 @@
             //
             
             import Cocoa
-            import WebKit
             
             extension Notification.Name {
                 static var XsltStudioDocumentChanged = Notification.Name("XsltStudioDocumentChanged")
@@ -16,9 +15,6 @@
             class XSLTStudioViewController: NSSplitViewController {
                 
                 @IBOutlet weak var leftSplitViewItem: NSSplitViewItem!
-                @IBOutlet weak var rightSplitViewItem: NSSplitViewItem!
-                
-                var xmlXml: XMLDocument?
                 
                 var document: Document! {
                     return representedObject as? Document
@@ -33,28 +29,9 @@
                     }
                 }
                 
-//                var rvc: RightViewController? {
-//                    if let r = rightSplitViewItem {
-//                        return r.viewController as? RightViewController
-//                    }
-//                    else {
-//                        return nil
-//                    }
-//                }
-                
-                //var tlvc: TopLeftViewController! { lvc?.tlvc }
-                //var blvc: BottomLeftViewController! { lvc?.blvc }
-                //var trvc: TopRightViewController! { rvc?.trvc }
-                //var brvc: BottomRightViewController! { rvc?.brvc }
-                
-                // MARK: - Notification Observer
-                // No need to unregister any old observer: by using the observer-propery we take care of this atomatically
-                //var docObserver: NSObjectProtocol? // Cookies to later “stop listening” with
-                
                 // MARK: - LifeCycle
                 override func viewDidLoad() {
                     super.viewDidLoad()
-                    
                     // Do any additional setup after loading the view.
                 }
                 
@@ -63,7 +40,6 @@
                         // Restore the splitview middle divider
                         self.splitView.setPosition(content.middle * self.view.frame.width, ofDividerAt: 0)
                     }
-                    NotificationCenter.default.post(name: Notification.Name("XsltStudioDocumentChanged"), object: self)
                 }
                 
                 override var representedObject: Any? {
@@ -74,7 +50,6 @@
                         for child in children {
                             child.representedObject = representedObject
                         }
-                        NotificationCenter.default.post(name: Notification.Name("XsltStudioDocumentChanged"), object: self)
                     }
                 }
                 
