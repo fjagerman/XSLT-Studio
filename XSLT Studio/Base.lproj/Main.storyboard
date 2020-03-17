@@ -724,6 +724,8 @@
                         </connections>
                     </splitView>
                     <connections>
+                        <outlet property="leftSplitViewItem" destination="6QQ-qN-NOH" id="Dl9-nb-8MQ"/>
+                        <outlet property="rightSplitViewItem" destination="uR3-3W-LNA" id="yrX-0C-w63"/>
                         <outlet property="splitView" destination="hfB-JX-PWI" id="aHu-Ux-KPc"/>
                         <segue destination="WCg-Oj-opA" kind="relationship" relationship="splitItems" id="Vrn-Uf-JTd"/>
                         <segue destination="fw6-tV-rDQ" kind="relationship" relationship="splitItems" id="5fM-wU-44t"/>
@@ -733,10 +735,10 @@
             </objects>
             <point key="canvasLocation" x="75" y="842"/>
         </scene>
-        <!--Split View Controller-->
+        <!--Left View Controller-->
         <scene sceneID="nGu-k9-Ibm">
             <objects>
-                <splitViewController id="WCg-Oj-opA" sceneMemberID="viewController">
+                <splitViewController id="WCg-Oj-opA" customClass="LeftViewController" customModule="XSLT_Studio" customModuleProvider="target" sceneMemberID="viewController">
                     <splitViewItems>
                         <splitViewItem id="buc-eA-idW"/>
                         <splitViewItem id="G3M-WJ-fQb"/>
@@ -749,7 +751,9 @@
                         </connections>
                     </splitView>
                     <connections>
+                        <outlet property="bottomSplitViewItem" destination="G3M-WJ-fQb" id="zdT-AL-Ip3"/>
                         <outlet property="splitView" destination="CDV-gA-oqh" id="cM3-Wx-Z1r"/>
+                        <outlet property="topSplitViewItem" destination="buc-eA-idW" id="07i-yO-RnM"/>
                         <segue destination="PTB-oZ-PWu" kind="relationship" relationship="splitItems" id="dPV-vD-ivs"/>
                         <segue destination="YjN-w4-CaH" kind="relationship" relationship="splitItems" id="1VJ-yd-fnB"/>
                     </connections>
@@ -963,10 +967,10 @@
             </objects>
             <point key="canvasLocation" x="1582" y="779"/>
         </scene>
-        <!--Split View Controller-->
+        <!--Right View Controller-->
         <scene sceneID="nFz-EI-mBu">
             <objects>
-                <splitViewController id="fw6-tV-rDQ" sceneMemberID="viewController">
+                <splitViewController id="fw6-tV-rDQ" customClass="RightViewController" customModule="XSLT_Studio" customModuleProvider="target" sceneMemberID="viewController">
                     <splitViewItems>
                         <splitViewItem id="XDe-WM-T1q"/>
                         <splitViewItem id="7W4-gj-Jwq"/>
@@ -979,7 +983,9 @@
                         </connections>
                     </splitView>
                     <connections>
+                        <outlet property="bottomSplitViewItem" destination="7W4-gj-Jwq" id="ZqC-gg-1px"/>
                         <outlet property="splitView" destination="H6E-eR-ndK" id="L0a-DY-KtA"/>
+                        <outlet property="topSplitViewItem" destination="XDe-WM-T1q" id="2eb-Ir-e9q"/>
                         <segue destination="Y6c-YC-zOJ" kind="relationship" relationship="splitItems" id="n5O-dQ-ZCd"/>
                         <segue destination="RYX-Vm-QMo" kind="relationship" relationship="splitItems" id="bAz-W9-2DA"/>
                     </connections>
@@ -1068,7 +1074,6 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="html" destination="eCF-eV-dh5" id="Oee-Lp-Dcm"/>
                         <outlet property="htmlCheckbox" destination="eCF-eV-dh5" id="7Cb-YX-hOf"/>
                         <outlet property="textView" destination="Te8-UF-1on" id="Xkt-wL-RQL"/>
                     </connections>

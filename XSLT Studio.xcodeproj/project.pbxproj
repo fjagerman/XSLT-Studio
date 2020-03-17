@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		95019A2224202BF000F339AA /* LeftViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95019A2124202BF000F339AA /* LeftViewController.swift */; };
+		95019A2424202C0B00F339AA /* RightViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95019A2324202C0B00F339AA /* RightViewController.swift */; };
 		9541CDB321F5D52D00A9DC41 /* XsltStudioProject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9541CDB221F5D52D00A9DC41 /* XsltStudioProject.swift */; };
 		955FA25E24070F8400811B5C /* XSL Transformations (XSLT).html in Resources */ = {isa = PBXBuildFile; fileRef = 955FA25D24070F8400811B5C /* XSL Transformations (XSLT).html */; };
 		955FA260240714A600811B5C /* RefGuideWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 955FA25F240714A600811B5C /* RefGuideWindowController.swift */; };
@@ -25,6 +27,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		95019A2124202BF000F339AA /* LeftViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftViewController.swift; sourceTree = "<group>"; };
+		95019A2324202C0B00F339AA /* RightViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RightViewController.swift; sourceTree = "<group>"; };
 		9541CDB221F5D52D00A9DC41 /* XsltStudioProject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XsltStudioProject.swift; sourceTree = "<group>"; };
 		955FA25C2406AA0900811B5C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		955FA25D24070F8400811B5C /* XSL Transformations (XSLT).html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "XSL Transformations (XSLT).html"; sourceTree = "<group>"; };
@@ -80,9 +84,11 @@
 			isa = PBXGroup;
 			children = (
 				95BC78402418EB4D0056B566 /* Model */,
+				95019A2124202BF000F339AA /* LeftViewController.swift */,
 				95D8A9E321DCDC0E0004285C /* TopLeftViewController.swift */,
-				95D8A9E921DD01F90004285C /* TopRightViewController.swift */,
 				95D8A9E521DCDCA60004285C /* BottomLeftViewController.swift */,
+				95019A2324202C0B00F339AA /* RightViewController.swift */,
+				95D8A9E921DD01F90004285C /* TopRightViewController.swift */,
 				95D8A9ED21DD02220004285C /* BottomRightViewController.swift */,
 				955FA25F240714A600811B5C /* RefGuideWindowController.swift */,
 				955FA2612407154B00811B5C /* RefGuideWindow.xib */,
@@ -203,6 +209,8 @@
 				95D8A9EE21DD02220004285C /* BottomRightViewController.swift in Sources */,
 				95D8A9EB21DD01F90004285C /* TopRightViewController.swift in Sources */,
 				95923E5921D56425005FCD24 /* XSLTStudioViewController.swift in Sources */,
+				95019A2424202C0B00F339AA /* RightViewController.swift in Sources */,
+				95019A2224202BF000F339AA /* LeftViewController.swift in Sources */,
 				95923E5721D56425005FCD24 /* AppDelegate.swift in Sources */,
 				9541CDB321F5D52D00A9DC41 /* XsltStudioProject.swift in Sources */,
 				95D8A9E421DCDC0E0004285C /* TopLeftViewController.swift in Sources */,
