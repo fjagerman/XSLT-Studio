@@ -57,8 +57,8 @@ class RightViewController: NSSplitViewController {
         if trvc != nil && document != nil {
             if trvc.htmlCheckbox.state.rawValue == 1 {
                 document.content?.right = trvc.view.frame.height / view.frame.height
+                document.updateChangeCount(.changeDone)
             }
-            document.updateChangeCount(.changeDone)
         }
     }
 }

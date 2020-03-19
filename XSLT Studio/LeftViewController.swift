@@ -12,17 +12,7 @@ class LeftViewController: NSSplitViewController {
     
     
     @IBOutlet weak var topSplitViewItem: NSSplitViewItem!
-    
-    var tlvc: TopLeftViewController! {
-        if let t = topSplitViewItem {
-            return t.viewController as? TopLeftViewController
-        }
-        else {
-            return nil
-        }
-    }
-
-    
+        
     // MARK: - Notification Observer
     // No need to unregister any old observer: by using the observer-propery we take care of this atomatically
     var docObserver: NSObjectProtocol? // Cookies to later “stop listening” with
@@ -56,8 +46,8 @@ class LeftViewController: NSSplitViewController {
     // MARK: - SplitviewDelegate
     override func splitViewDidResizeSubviews(_ notification: Notification) {
         // Update the slider-positions in content
-        if tlvc != nil && document != nil {
-            document.content?.left = tlvc.view.frame.height / view.frame.height
+        if topSplitViewItem != nil && document != nil {
+            document.content?.left = topSplitViewItem.viewController.view.frame.height / view.frame.height
             document.updateChangeCount(.changeDone)
         }
     }
