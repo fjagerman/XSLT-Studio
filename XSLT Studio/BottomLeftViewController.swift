@@ -49,6 +49,8 @@ class BottomLeftViewController: NSViewController {
                     self.document.content!.preserveWhitespace = (self.whiteSpaceCheckbox.state.rawValue == 1)
                     // actual user input: update and notify the document
                     self.document.content!.xslt = newXslt
+                    // put the prettyprinted sring back into the XSLT editor
+                    self.xsltInput?.stringValue = self.document.content!.xslt
                     self.document.updateChangeCount(.changeDone)
                 }
             }

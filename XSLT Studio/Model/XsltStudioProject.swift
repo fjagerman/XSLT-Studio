@@ -11,7 +11,7 @@ import Foundation
 struct XsltStudioProject: Codable {
     
     // MARK: - Non-Codable Attributes
-    var parseOptions: XMLNode.Options = [.documentTidyXML]
+    var parseOptions: XMLNode.Options = [.nodePrettyPrint, .documentTidyXML]
     var outputOptions: XMLNode.Options = [.nodePrettyPrint, .nodeCompactEmptyElement]
     var output = ""
     private var parseError = true
@@ -45,6 +45,7 @@ struct XsltStudioProject: Codable {
                 parseOptions.remove(.nodePreserveWhitespace)
                 outputOptions.remove(.nodePreserveWhitespace)
             }
+            refreshOutput()
         }
     }
     var html = true
